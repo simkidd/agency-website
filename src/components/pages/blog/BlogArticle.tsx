@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import ArticleHeader from "./ArticleHeader";
+import TextContent from "./TextContent";
 
 const articles = [
   {
@@ -164,10 +165,11 @@ const BlogArticle = ({ postId }: { postId: string }) => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               {/* Main Content */}
               <div className="lg:col-span-8">
-                <div
+                {/* <div
                   className="article-content prose prose-invert prose-lg max-w-none"
                   dangerouslySetInnerHTML={{ __html: article.content }}
-                />
+                /> */}
+                <TextContent content={article.content} />
 
                 {/* Tags */}
                 <div className="mt-12 pt-8 border-t border-white/10">
