@@ -1,23 +1,20 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Share2,
-  Twitter,
-  Linkedin,
-  Facebook,
   Bookmark,
+  Facebook,
+  Linkedin,
   MessageCircle,
-  ThumbsUp,
+  Share2,
   Tag,
+  ThumbsUp,
+  Twitter,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { notFound } from "next/navigation";
 import ArticleHeader from "./ArticleHeader";
 import TextContent from "./TextContent";
-import Image from "next/image";
 
 const articles = [
   {
@@ -144,7 +141,26 @@ const relatedArticles = [
 
 const BlogArticle = ({ postId }: { postId: string }) => {
   const article = articles.find((a) => a.id === postId);
-  if (!article) return null;
+  if (!article) return notFound();
+
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
   return (
     <div>
@@ -165,28 +181,41 @@ const BlogArticle = ({ postId }: { postId: string }) => {
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               {/* Main Content */}
-              <div className="lg:col-span-8">
-                <div className="text-white">
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+                className="lg:col-span-8"
+              >
+                <motion.div variants={fadeUp} className="text-white">
                   <TextContent content={article.content} />
-                </div>
+                </motion.div>
 
                 {/* Tags */}
-                <div className="mt-12 pt-8 border-t border-white/10">
+                <motion.div
+                  variants={fadeUp}
+                  className="mt-12 pt-8 border-t border-white/10"
+                >
                   <div className="flex flex-wrap gap-2">
                     {article.tags.map((tag) => (
-                      <span
+                      <motion.span
                         key={tag}
+                        whileHover={{ scale: 1.05 }}
                         className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 text-white/60 text-sm"
                       >
                         <Tag className="w-3 h-3" />
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Engagement */}
-                <div className="mt-8 flex items-center gap-6">
+                <motion.div
+                  variants={fadeUp}
+                  className="mt-8 flex items-center gap-6"
+                >
                   <button className="flex items-center gap-2 text-white/60 hover:text-[#2895f7] transition-colors">
                     <ThumbsUp className="w-5 h-5" />
                     <span>{article.likes}</span>
@@ -199,10 +228,13 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                     <Bookmark className="w-5 h-5" />
                     <span>Save</span>
                   </button>
-                </div>
+                </motion.div>
 
                 {/* Share */}
-                <div className="mt-8 p-6 rounded-2xl glass border border-white/10">
+                <motion.div
+                  variants={fadeUp}
+                  className="mt-8 p-6 rounded-2xl glass border border-white/10"
+                >
                   <div className="flex items-center justify-between">
                     <span className="text-white font-medium flex items-center gap-2">
                       <Share2 className="w-5 h-5" />
@@ -220,10 +252,13 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Author Bio */}
-                <div className="mt-8 p-6 rounded-2xl glass border border-white/10">
+                <motion.div
+                  variants={fadeUp}
+                  className="mt-8 p-6 rounded-2xl glass border border-white/10"
+                >
                   <div className="flex items-start gap-4">
                     <Image
                       src={article.authorImage}
@@ -246,16 +281,26 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Sidebar */}
               <div className="lg:col-span-4">
-                <div className="sticky top-32">
+                <motion.div
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="sticky top-32"
+                >
                   <h3 className="text-white font-semibold text-lg mb-6">
                     Related Articles
                   </h3>
-                  <div className="space-y-4">
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
+                  >
                     {relatedArticles.map((related) => (
                       <Link
                         key={related.id}
@@ -286,7 +331,7 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                         </div>
                       </Link>
                     ))}
-                  </div>
+                  </motion.div>
 
                   {/* Newsletter */}
                   <div className="mt-8 p-6 rounded-2xl glass border border-white/10">
@@ -305,7 +350,7 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                       Subscribe
                     </button>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
