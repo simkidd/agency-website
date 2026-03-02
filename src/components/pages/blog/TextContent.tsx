@@ -20,7 +20,7 @@ const TextContent = ({ content }: { content: string }) => {
       [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mb-2 [&_h3]:mt-4
       [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:mb-6 [&_h4]:mt-4 [&_h4]:leading-7.5
 
-      [&_p]:mb-4 [&_p]:text-gray-700 dark:[&_p]:text-gray-300 [&_p]:text-[15px] [&_p]:leading-7
+      [&_p]:mb-4 [&_p]:text-neutral-800 dark:[&_p]:text-neutral-100 [&_p]:text-[15px] [&_p]:leading-7
 
       [&_ul]:ml-6 [&_ul]:list-disc [&_ul_li]:mb-2 [&_li]:text-[15px]
       [&_ol]:ml-6 [&_ol]:list-decimal [&_ol_li]:mb-2

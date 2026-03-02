@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import ArticleHeader from "./ArticleHeader";
 import TextContent from "./TextContent";
+import Image from "next/image";
 
 const articles = [
   {
@@ -165,11 +166,9 @@ const BlogArticle = ({ postId }: { postId: string }) => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               {/* Main Content */}
               <div className="lg:col-span-8">
-                {/* <div
-                  className="article-content prose prose-invert prose-lg max-w-none"
-                  dangerouslySetInnerHTML={{ __html: article.content }}
-                /> */}
-                <TextContent content={article.content} />
+                <div className="text-white">
+                  <TextContent content={article.content} />
+                </div>
 
                 {/* Tags */}
                 <div className="mt-12 pt-8 border-t border-white/10">
@@ -226,10 +225,12 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                 {/* Author Bio */}
                 <div className="mt-8 p-6 rounded-2xl glass border border-white/10">
                   <div className="flex items-start gap-4">
-                    <img
+                    <Image
                       src={article.authorImage}
                       alt={article.author}
                       className="w-16 h-16 rounded-full object-cover"
+                      width={100}
+                      height={100}
                     />
                     <div>
                       <h3 className="text-white font-semibold text-lg">
@@ -262,11 +263,13 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                         className="group block"
                       >
                         <div className="flex gap-4">
-                          <div className="w-24 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                            <img
+                          <div className="w-24 h-16 rounded-lg overflow-hidden shrink-0">
+                            <Image
                               src={related.image}
                               alt={related.title}
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              width={150}
+                              height={150}
                             />
                           </div>
                           <div>
@@ -298,7 +301,7 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                       placeholder="Enter your email"
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-[#2895f7] focus:outline-none transition-all text-sm mb-3"
                     />
-                    <button className="w-full py-3 bg-[#2895f7] text-white font-medium rounded-xl hover:bg-[#0082f3] transition-all text-sm">
+                    <button className="w-full py-3 bg-[#2895f7] text-white font-medium rounded-xl hover:bg-[#0082f3] transition-all text-sm cursor-pointer">
                       Subscribe
                     </button>
                   </div>
