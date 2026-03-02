@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -39,23 +39,33 @@ const PageHeader = ({
         <motion.div
           className={`max-w-4xl mx-auto text-center`}
           variants={{
-             hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { staggerChildren: 0.1, duration: 0.8, ease: "easeOut" },
-    },
+            hidden: { opacity: 0, y: 50 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                staggerChildren: 0.1,
+                duration: 0.8,
+                ease: "easeOut",
+              },
+            },
           }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           {badgeText && (
-            <motion.span className="inline-block px-4 py-1.5 rounded-full bg-[#2895f7]/10 text-[#2895f7] text-sm font-medium mb-6"  variants={item}>
+            <motion.span
+              className="inline-block px-4 py-1.5 rounded-full bg-[#2895f7]/10 text-[#2895f7] text-sm font-medium mb-6"
+              variants={item}
+            >
               {badgeText}
             </motion.span>
           )}
-          <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6" variants={item}>
+          <motion.h1
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6"
+            variants={item}
+          >
             {beforeGradient}
             {gradientText && (
               <span className="text-gradient">{gradientText}</span>
@@ -63,7 +73,10 @@ const PageHeader = ({
             {afterGradient}
           </motion.h1>
           {subtitle && (
-            <motion.p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed" variants={item}>
+            <motion.p
+              className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed"
+              variants={item}
+            >
               {subtitle}
             </motion.p>
           )}
