@@ -1,11 +1,11 @@
-import CaseStudies from "@/components/home/CaseStudies";
-import Contact from "@/components/home/Contact";
-import Features from "@/components/home/Features";
-import Hero from "@/components/home/Hero";
-import LogoEcosystem from "@/components/home/LogoEcosystem";
-import Process from "@/components/home/Process";
-import Services from "@/components/home/Services";
-import Testimonials from "@/components/home/Testimonials";
+import CaseStudies from "@/components/pages/home/CaseStudies";
+import Contact from "@/components/pages/home/Contact";
+import Features from "@/components/pages/home/Features";
+import Hero from "@/components/pages/home/Hero";
+import LogoEcosystem from "@/components/pages/home/LogoEcosystem";
+import Process from "@/components/pages/home/Process";
+import Services from "@/components/pages/home/Services";
+import Testimonials from "@/components/pages/home/Testimonials";
 import React from "react";
 
 const HomePage = () => {

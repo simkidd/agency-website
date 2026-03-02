@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Play } from "lucide-react";
-import AnimatedCounter from "../common/AnimatedCounter";
+import AnimatedCounter from "../../common/AnimatedCounter";
 import Link from "next/link";
 import Image from "next/image";
 
