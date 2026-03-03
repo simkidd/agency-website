@@ -62,7 +62,7 @@ const BlogFilter = ({
                   variants={filterItem}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`relative flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "bg-[#2895f7] text-white"
                       : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
