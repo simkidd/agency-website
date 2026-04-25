@@ -1,173 +1,129 @@
 "use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Zap, Users, Scale, Headphones } from "lucide-react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion, Variants } from "framer-motion";
+import { Zap, Shield, Layers, Globe, BarChart2, Cpu } from "lucide-react";
 
 const features = [
   {
     icon: Zap,
-    title: "Agile Methodology",
-    description:
-      "Rapid iteration and continuous delivery ensure your project evolves with your needs.",
+    title: "Lightning Fast",
+    desc: "We build for performance from day one — optimized code, edge delivery, and sub-second load times.",
+    accent: "#4f8ef7",
   },
   {
-    icon: Users,
-    title: "User-Centric Design",
-    description:
-      "Every pixel is crafted with your users in mind, creating intuitive experiences.",
+    icon: Shield,
+    title: "Security First",
+    desc: "Enterprise-grade security practices baked into every layer of development.",
+    accent: "#7aafff",
   },
   {
-    icon: Scale,
+    icon: Layers,
     title: "Scalable Architecture",
-    description:
-      "Built to grow with your business, from startup to enterprise scale.",
+    desc: "Systems designed to grow seamlessly from MVP to millions of users.",
+    accent: "#4f8ef7",
   },
   {
-    icon: Headphones,
-    title: "24/7 Support",
-    description:
-      "Round-the-clock assistance ensures your systems run smoothly always.",
+    icon: Globe,
+    title: "Global Reach",
+    desc: "Deployed on globally distributed infrastructure so your users always get the fastest experience.",
+    accent: "#a5c8ff",
+  },
+  {
+    icon: BarChart2,
+    title: "Data Driven",
+    desc: "Analytics and insights built in — so you always know what's working.",
+    accent: "#4f8ef7",
+  },
+  {
+    icon: Cpu,
+    title: "AI Enhanced",
+    desc: "Leverage cutting-edge AI to automate workflows and personalize experiences at scale.",
+    accent: "#7aafff",
   },
 ];
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function Features() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Animate heading and center image together
-      gsap.from([headingRef.current, imageRef.current], {
-        y: 50,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      // Parallax only on the center image
-      if (imageRef.current) {
-        gsap.to(imageRef.current, {
-          y: -40,
-          rotate: 10,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 bg-[#0a0a0c] overflow-hidden"
-    >
-      {/* Background image */}
-      <div className="absolute inset-0 opacity-30">
-        <Image
-          src="/images/features-bg.jpg"
-          alt=""
-          className="w-full h-full object-cover"
-          fill
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-[#0a0a0c] via-transparent to-[#0a0a0c]" />
+    <section className="relative py-28 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#07070a]">
+        <div className="absolute inset-0 bg-dots opacity-60" />
+        {/* Accent glow */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[rgba(79,142,247,0.05)] blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
-        {/* Section header */}
-        <div ref={headingRef} className="text-center mb-20">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#2895f7]/10 text-[#2895f7] text-sm font-medium mb-6">
-            Why Choose Us
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Why Choose <span className="text-gradient">TechNova?</span>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-5 uppercase tracking-wider">
+            Why TechNova
+          </div>
+          <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight mb-4">
+            Built for the <span className="text-gradient">modern web</span>
           </h2>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            We combine technical expertise with creative innovation to deliver
-            exceptional digital solutions that drive business growth.
+          <p className="text-[rgba(238,238,246,0.5)] text-lg leading-relaxed">
+            Every decision we make is in service of delivering products that
+            perform, delight, and endure.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Feature grid with center image */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Center image */}
-          <div
-            ref={imageRef}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 lg:w-80 lg:h-80 z-0"
-          >
-            <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[#2895f7]/30 glow-blue">
-              <Image
-                src="/images/features-bg.jpg"
-                alt="Abstract waves"
-                className="w-full h-full object-cover"
-                width={500}
-                height={500}
-              />
-              <div className="absolute inset-0 bg-linear-to-br from-[#2895f7]/20 to-transparent" />
-            </div>
-          </div>
+        {/* Grid */}
+        <motion.div
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {features.map((feat) => (
+            <motion.div
+              key={feat.title}
+              variants={fadeUp}
+              className="group relative p-7 rounded-2xl border border-[rgba(255,255,255,0.07)] bg-[rgba(13,13,20,0.8)] hover:border-[rgba(79,142,247,0.2)] transition-all duration-300 overflow-hidden"
+            >
+              {/* Hover glow */}
+              <div className="absolute inset-0 bg-[rgba(79,142,247,0.03)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
 
-          {/* Feature cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 relative z-10">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              const isTop = index < 2;
-              const isLeft = index % 2 === 0;
+              {/* Icon */}
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                style={{
+                  background: `rgba(79,142,247,0.1)`,
+                  border: `1px solid rgba(79,142,247,0.2)`,
+                }}
+              >
+                <feat.icon className="w-5 h-5" style={{ color: feat.accent }} />
+              </div>
 
-              return (
-                <motion.div
-                  key={feature.title}
-                  className={`group relative p-8 rounded-2xl glass border border-white/10 hover:border-[#2895f7]/50 transition-all duration-500 hover:glow-blue ${
-                    isTop ? "md:mb-32" : "md:mt-32"
-                  } ${isLeft ? "md:mr-48" : "md:ml-48"}`}
-                  style={{ perspective: "1000px" }}
-                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  whileHover={{ boxShadow: "0 20px 40px rgba(40,149,247,0.2)" }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                >
-                  {/* Icon */}
-                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#2895f7]/20 to-[#00d9ff]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-7 h-7 text-[#2895f7]" />
-                  </div>
+              <h3 className="font-display font-600 text-[#eeeef6] text-lg mb-2">
+                {feat.title}
+              </h3>
+              <p className="text-[rgba(238,238,246,0.48)] text-sm leading-relaxed">
+                {feat.desc}
+              </p>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-gradient transition-all duration-300">
-                    {feature.title}
-                  </h3>
-                  <p className="text-white/50 leading-relaxed">
-                    {feature.description}
-                  </p>
-
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-[#2895f7]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+              {/* Corner accent */}
+              <div className="absolute bottom-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <svg viewBox="0 0 80 80" fill="none" className="w-full h-full">
+                  <path d="M80 0 L80 80 L0 80" fill="rgba(79,142,247,0.04)" />
+                </svg>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
