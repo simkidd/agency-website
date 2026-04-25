@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Code2, Palette, BrainCircuit, Cloud, ShoppingBag, LineChart,
   ArrowUpRight, CheckCircle2
@@ -104,7 +104,7 @@ const services = [
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
