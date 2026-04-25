@@ -1,307 +1,107 @@
 "use client";
-
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Briefcase,
-  MapPin,
-  Clock,
-  DollarSign,
-  ArrowRight,
-  Check,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
-const departments = ["All", "Engineering", "Design", "Product", "Marketing"];
-
-const jobs = [
+const positions = [
   {
     id: 1,
-    title: "Senior Frontend Developer",
-    department: "Engineering",
-    location: "Remote",
+    title: "Senior Frontend Engineer",
+    dept: "Engineering",
     type: "Full-time",
-    salary: "$120k - $160k",
-    description:
-      "We're looking for an experienced frontend developer to lead our web development initiatives.",
-    requirements: [
-      "5+ years of experience with React/Next.js",
-      "Strong TypeScript skills",
-      "Experience with state management (Redux, Zustand)",
-      "Knowledge of performance optimization",
-      "Experience with testing frameworks",
-    ],
+    location: "Remote",
   },
   {
     id: 2,
-    title: "UI/UX Designer",
-    department: "Design",
-    location: "Remote",
+    title: "Product Designer",
+    dept: "Design",
     type: "Full-time",
-    salary: "$90k - $130k",
-    description:
-      "Join our design team to create beautiful, intuitive user experiences.",
-    requirements: [
-      "3+ years of UI/UX design experience",
-      "Proficiency in Figma",
-      "Portfolio showcasing web/mobile designs",
-      "Experience with design systems",
-      "Strong communication skills",
-    ],
+    location: "Remote / SF",
   },
   {
     id: 3,
-    title: "Backend Engineer",
-    department: "Engineering",
-    location: "Remote",
+    title: "Backend Engineer (Node.js)",
+    dept: "Engineering",
     type: "Full-time",
-    salary: "$130k - $170k",
-    description:
-      "Build scalable APIs and services that power our applications.",
-    requirements: [
-      "4+ years of backend development experience",
-      "Strong Node.js/Python skills",
-      "Database design and optimization",
-      "Cloud platform experience (AWS/GCP)",
-      "Microservices architecture knowledge",
-    ],
+    location: "Remote",
   },
   {
     id: 4,
-    title: "Product Manager",
-    department: "Product",
-    location: "Remote",
+    title: "AI/ML Engineer",
+    dept: "AI",
     type: "Full-time",
-    salary: "$110k - $150k",
-    description: "Lead product development from ideation to launch.",
-    requirements: [
-      "3+ years of product management experience",
-      "Experience with agile methodologies",
-      "Strong analytical skills",
-      "Technical background preferred",
-      "Excellent stakeholder management",
-    ],
+    location: "Remote",
   },
   {
     id: 5,
-    title: "DevOps Engineer",
-    department: "Engineering",
-    location: "Remote",
+    title: "Growth Marketing Manager",
+    dept: "Marketing",
     type: "Full-time",
-    salary: "$120k - $160k",
-    description:
-      "Build and maintain our cloud infrastructure and CI/CD pipelines.",
-    requirements: [
-      "4+ years of DevOps experience",
-      "Strong Kubernetes and Docker skills",
-      "Infrastructure as Code (Terraform)",
-      "CI/CD pipeline experience",
-      "Security best practices knowledge",
-    ],
+    location: "Remote / NYC",
   },
   {
     id: 6,
-    title: "Marketing Manager",
-    department: "Marketing",
-    location: "Remote",
+    title: "DevOps / Platform Engineer",
+    dept: "Infrastructure",
     type: "Full-time",
-    salary: "$80k - $110k",
-    description: "Drive our marketing strategy and grow our brand presence.",
-    requirements: [
-      "3+ years of B2B marketing experience",
-      "Digital marketing expertise",
-      "Content strategy experience",
-      "Analytics and data-driven mindset",
-      "Excellent written communication",
-    ],
+    location: "Remote",
   },
 ];
 
-const OpenPositions = () => {
-  const [activeDepartment, setActiveDepartment] = useState("All");
-  const [expandedJob, setExpandedJob] = useState<number | null>(null);
-
-  const filteredJobs =
-    activeDepartment === "All"
-      ? jobs
-      : jobs.filter((job) => job.department === activeDepartment);
-
-  const toggleJob = (id: number) => {
-    setExpandedJob(expandedJob === id ? null : id);
-  };
-
-  const filterItem = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    show: { opacity: 1, y: 0, scale: 1 },
-  };
-
+export default function OpenPositions() {
   return (
-    <section className="py-20">
-      <div className="w-full px-6 lg:px-12 xl:px-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Open <span className="text-gradient">Positions</span>
+    <section className="relative py-20 overflow-hidden">
+      <div className="absolute inset-0 bg-[#07070a]">
+        <div className="absolute inset-0 bg-grid-fine opacity-40" />
+      </div>
+      <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-10"
+        >
+          <h2 className="font-display font-700 text-3xl text-[#eeeef6]">
+            Open Positions
           </h2>
-          <p className="text-white/50">
-            Find your perfect role and join our growing team.
-          </p>
-        </div>
-
-        {/* Department Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {departments.map((dept) => {
-            const isActive = activeDepartment === dept;
-            return (
-              <motion.button
-                key={dept}
-                onClick={() => setActiveDepartment(dept)}
-                variants={filterItem}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? "bg-[#2895f7] text-white"
-                    : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                {/* animated active background */}
-                {isActive && (
-                  <motion.span
-                    layoutId="activeDepartment"
-                    className="absolute inset-0 rounded-full bg-[#2895f7]"
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 25,
-                    }}
-                  />
-                )}
-
-                <span className="relative">{dept}</span>
-              </motion.button>
-            );
-          })}
-        </div>
-
-        {/* Job Listings */}
-        <div className="space-y-4 max-w-4xl mx-auto">
-          {filteredJobs.map((job, index) => {
-            const isExpanded = expandedJob === job.id;
-
-            return (
-              <motion.div
-                key={job.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <div
-                  className={`relative p-6 rounded-2xl border transition-all duration-500 cursor-pointer ${
-                    isExpanded
-                      ? "bg-white/5 border-[#2895f7]/50"
-                      : "glass border-white/10 hover:border-white/20"
-                  }`}
-                  onClick={() => toggleJob(job.id)}
-                >
-                  {/* Header */}
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-white group-hover:text-gradient transition-all">
-                        {job.title}
-                      </h3>
-                      <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-white/50">
-                        <span className="flex items-center gap-1">
-                          <Briefcase className="w-4 h-4" />
-                          {job.department}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-4 h-4" />
-                          {job.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {job.type}
-                        </span>
-                        <span className="flex items-center gap-1 text-[#2895f7]">
-                          <DollarSign className="w-4 h-4" />
-                          {job.salary}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <ArrowRight
-                        className={`w-5 h-5 text-white/40 transition-transform duration-300 ${
-                          isExpanded ? "rotate-90" : ""
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Expanded Content */}
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pt-6 mt-6 border-t border-white/10">
-                          <p className="text-white/60 mb-6">
-                            {job.description}
-                          </p>
-
-                          <h4 className="text-white font-medium mb-3">
-                            Requirements:
-                          </h4>
-                          <ul className="space-y-2 mb-6">
-                            {job.requirements.map((req, i) => (
-                              <li
-                                key={i}
-                                className="flex items-start gap-2 text-white/60"
-                              >
-                                <Check className="w-5 h-5 text-[#2895f7] flex-shrink-0 mt-0.5" />
-                                <span>{req}</span>
-                              </li>
-                            ))}
-                          </ul>
-
-                          <Link
-                            href={`/careers/apply?job=${job.id}`}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#2895f7] text-white font-medium rounded-full hover:bg-[#0082f3] transition-all"
-                          >
-                            Apply Now
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* No Results */}
-        {filteredJobs.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-white/40 mb-4">
-              No open positions in this department.
-            </p>
-            <button
-              onClick={() => setActiveDepartment("All")}
-              className="text-[#2895f7] hover:underline"
+        </motion.div>
+        <div className="space-y-3">
+          {positions.map((pos, i) => (
+            <motion.div
+              key={pos.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
             >
-              View all positions
-            </button>
-          </div>
-        )}
+              <Link
+                href={`/careers/apply?job=${pos.id}`}
+                className="group flex items-center justify-between p-6 rounded-xl border border-[rgba(255,255,255,0.07)] bg-[rgba(13,13,20,0.8)] hover:border-[rgba(79,142,247,0.2)] hover:bg-[rgba(13,13,20,1)] transition-all duration-200"
+              >
+                <div className="flex items-center gap-6 flex-wrap">
+                  <h3 className="font-display font-600 text-[#eeeef6] text-lg">
+                    {pos.title}
+                  </h3>
+                  <span className="px-2.5 py-1 rounded-md bg-[rgba(79,142,247,0.1)] text-[#4f8ef7] text-xs font-medium">
+                    {pos.dept}
+                  </span>
+                  <span className="text-[rgba(238,238,246,0.35)] text-sm">
+                    {pos.type}
+                  </span>
+                  <span className="text-[rgba(238,238,246,0.35)] text-sm">
+                    {pos.location}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-[rgba(238,238,246,0.4)] group-hover:text-[#4f8ef7] transition-colors ml-4 flex-shrink-0">
+                  <span className="text-sm hidden sm:inline">Apply</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default OpenPositions;
+}
