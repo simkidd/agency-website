@@ -9,7 +9,7 @@ export default async function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-dvh bg-[#0a0a0c]">
+    <div className="relative min-h-dvh">
       <CustomCursor />
       <Header />
       <main className="min-h-dvh">{children}</main>

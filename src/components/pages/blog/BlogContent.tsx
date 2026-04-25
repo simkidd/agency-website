@@ -1,260 +1,133 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Calendar,
-  Clock,
-  Code,
-  Cpu,
-  Palette,
-  Search,
-  TrendingUp,
-  User,
-} from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import BlogFilter from "./BlogFilter";
+import { ArrowUpRight, Clock } from "lucide-react";
 
-const categories = [
-  { id: "all", label: "All Posts", icon: TrendingUp },
-  { id: "tech", label: "Technology", icon: Code },
-  { id: "design", label: "Design", icon: Palette },
-  { id: "ai", label: "AI & ML", icon: Cpu },
-];
-
-const blogPosts = [
+const posts = [
   {
-    id: 1,
-    title: "The Future of Web Development: Trends to Watch in 2024",
+    id: "1",
+    category: "Technology",
+    title: "The Future of Web Development: Trends to Watch in 2025",
     excerpt:
       "Explore the cutting-edge technologies and methodologies shaping the future of web development, from AI-powered tools to WebAssembly.",
-    category: "tech",
-    author: "David Park",
-    date: "Jan 15, 2024",
     readTime: "8 min read",
-    image: "/images/case-study-1.jpg",
-    featured: true,
+    date: "Jan 15, 2025",
+    accent: "#4f8ef7",
+    bg: "from-[#0f1929] to-[#07070a]",
   },
   {
-    id: 2,
-    title: "Building Scalable Design Systems",
+    id: "2",
+    category: "Design",
+    title: "Building Scalable Design Systems That Stand the Test of Time",
     excerpt:
-      "Learn how to create and maintain design systems that grow with your organization while ensuring consistency across all products.",
-    category: "design",
-    author: "Sarah Mitchell",
-    date: "Jan 10, 2024",
+      "Learn how to create and maintain design systems that grow with your organisation while ensuring consistency across all products.",
     readTime: "6 min read",
-    image: "/images/case-study-3.jpg",
-    featured: false,
+    date: "Jan 10, 2025",
+    accent: "#7aafff",
+    bg: "from-[#0d1320] to-[#07070a]",
   },
   {
-    id: 3,
-    title: "AI in Modern Applications: A Practical Guide",
+    id: "3",
+    category: "AI & ML",
+    title: "AI in Modern Applications: A Practical Integration Guide",
     excerpt:
       "Discover how to integrate AI capabilities into your applications to enhance user experience and automate complex tasks.",
-    category: "ai",
-    author: "Alex Chen",
-    date: "Jan 5, 2024",
     readTime: "10 min read",
-    image: "/images/case-study-4.jpg",
-    featured: false,
+    date: "Jan 5, 2025",
+    accent: "#a5c8ff",
+    bg: "from-[#11102a] to-[#07070a]",
   },
   {
-    id: 4,
-    title: "The Art of Micro-Interactions",
+    id: "4",
+    category: "Engineering",
+    title: "Cloud-Native Architecture Best Practices for 2025",
     excerpt:
-      "Small details make big differences. Learn how micro-interactions can elevate your user experience to the next level.",
-    category: "design",
-    author: "Emma Wilson",
-    date: "Dec 28, 2023",
-    readTime: "5 min read",
-    image: "/images/case-study-2.jpg",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Cloud-Native Architecture Best Practices",
-    excerpt:
-      "A comprehensive guide to building resilient, scalable applications in the cloud using modern architectural patterns.",
-    category: "tech",
-    author: "David Park",
-    date: "Dec 20, 2023",
+      "Modern infrastructure patterns for teams that need to move fast without sacrificing reliability or security.",
     readTime: "12 min read",
-    image: "/images/case-study-1.jpg",
-    featured: false,
+    date: "Dec 28, 2024",
+    accent: "#7fd4c1",
+    bg: "from-[#0b1a18] to-[#07070a]",
   },
   {
-    id: 6,
-    title: "Machine Learning for Beginners",
+    id: "5",
+    category: "Design",
+    title: "The Art of Micro-Interactions: Details That Delight",
     excerpt:
-      "Start your journey into machine learning with this beginner-friendly guide covering fundamental concepts and practical applications.",
-    category: "ai",
-    author: "Alex Chen",
-    date: "Dec 15, 2023",
-    readTime: "15 min read",
-    image: "/images/case-study-4.jpg",
-    featured: false,
+      "Small moments of feedback that make digital products feel alive, responsive, and intentionally crafted.",
+    readTime: "5 min read",
+    date: "Dec 22, 2024",
+    accent: "#4f8ef7",
+    bg: "from-[#0f1929] to-[#07070a]",
+  },
+  {
+    id: "6",
+    category: "Strategy",
+    title: "From Brief to Build: How We Approach New Projects",
+    excerpt:
+      "A behind-the-scenes look at TechNova discovery and strategy process and why it makes everything else better.",
+    readTime: "7 min read",
+    date: "Dec 15, 2024",
+    accent: "#f7c44f",
+    bg: "from-[#1a1508] to-[#07070a]",
   },
 ];
 
-const BlogContent = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesCategory =
-      activeCategory === "all" || post.category === activeCategory;
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const featuredPost = blogPosts.find((post) => post.featured);
-  const regularPosts = filteredPosts.filter(
-    (post) => !post.featured || activeCategory !== "all",
-  );
-
+export default function BlogContent() {
   return (
-    <div>
-      <BlogFilter
-        categories={categories}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-
-      {/* Featured Post */}
-      {featuredPost && activeCategory === "all" && !searchQuery && (
-        <section className="py-16">
-          <div className="w-full px-6 lg:px-12 xl:px-20">
+    <section className="relative py-16 overflow-hidden">
+      <div className="absolute inset-0 bg-[#07070a]" />
+      <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {posts.map((post, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              key={post.id}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="group relative rounded-3xl overflow-hidden"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative aspect-video lg:aspect-auto overflow-hidden">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    width={300}
-                    height={300}
+              <Link href={`/blog/${post.id}`} className="group block h-full">
+                <div
+                  className={`relative h-full rounded-2xl border border-[rgba(255,255,255,0.07)] bg-gradient-to-br ${post.bg} hover:border-[rgba(79,142,247,0.2)] transition-all duration-300 overflow-hidden p-7 flex flex-col justify-between min-h-[260px]`}
+                >
+                  <div className="absolute inset-0 bg-dots opacity-30 pointer-events-none" />
+                  <div
+                    className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-15 blur-[50px] group-hover:opacity-30 transition-opacity"
+                    style={{ background: post.accent }}
                   />
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#0a0a0c] lg:block hidden" />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0c] to-transparent lg:hidden" />
-                </div>
-                <div className="p-8 lg:p-12 flex flex-col justify-center bg-[#0a0a0c]">
-                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#2895f7]/20 text-[#2895f7] text-xs font-medium mb-4">
-                    Featured
-                  </span>
-                  <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4 group-hover:text-linear transition-all">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="text-white/60 mb-6 leading-relaxed">
-                    {featuredPost.excerpt}
-                  </p>
-                  <div className="flex items-center gap-4 mb-6 text-sm text-white/40">
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      {featuredPost.author}
+                  <div className="relative z-10">
+                    <div
+                      className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4"
+                      style={{
+                        background: `${post.accent}15`,
+                        color: post.accent,
+                        border: `1px solid ${post.accent}25`,
+                      }}
+                    >
+                      {post.category}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      {featuredPost.date}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      {featuredPost.readTime}
-                    </div>
+                    <h3 className="font-display font-600 text-[#eeeef6] text-lg leading-snug mb-3">
+                      {post.title}
+                    </h3>
+                    <p className="text-[rgba(238,238,246,0.45)] text-sm leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
                   </div>
-                  <Link
-                    href={`/blog/${featuredPost.id}`}
-                    className="inline-flex items-center gap-2 text-[#2895f7] hover:text-white transition-colors group/btn"
-                  >
-                    Read Article
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-
-      {/* Blog Grid */}
-      <section className="py-16">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <Link href={`/blog/${post.id}`}>
-                  <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      width={300}
-                      height={300}
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0c]/80 to-transparent" />
-                    <span className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-white/10 text-white text-xs backdrop-blur-sm">
-                      {categories.find((c) => c.id === post.category)?.label}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-linear transition-all line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-white/50 text-sm mb-4 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-white/40">
-                    <div className="flex items-center gap-2">
-                      <User className="w-3 h-3" />
-                      {post.author}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-3 h-3" />
+                  <div className="relative z-10 flex items-center justify-between mt-6 pt-4 border-t border-[rgba(255,255,255,0.06)]">
+                    <div className="flex items-center gap-3 text-xs text-[rgba(238,238,246,0.3)]">
+                      <Clock className="w-3.5 h-3.5" />
                       {post.readTime}
+                      <span>·</span>
+                      {post.date}
                     </div>
+                    <ArrowUpRight className="w-4 h-4 text-[rgba(238,238,246,0.3)] group-hover:text-[#4f8ef7] transition-colors" />
                   </div>
-                </Link>
-              </motion.article>
-            ))}
-          </div>
-
-          {/* Empty State */}
-          {regularPosts.length === 0 && (
-            <div className="text-center py-20">
-              <div className="text-white/40 text-lg mb-4">
-                No articles found
-              </div>
-              <button
-                onClick={() => {
-                  setActiveCategory("all");
-                  setSearchQuery("");
-                }}
-                className="text-[#2895f7] hover:underline"
-              >
-                Clear filters
-              </button>
-            </div>
-          )}
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
-};
-
-export default BlogContent;
+}

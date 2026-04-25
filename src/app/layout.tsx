@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <NextTopLoader showSpinner={false} />
         <Providers>
-       <Suspense fallback={<LoadingScreen />}>{children}</Suspense>
+          <Suspense fallback={<LoadingScreen />}>{children}</Suspense>
         </Providers>
       </body>
     </html>
