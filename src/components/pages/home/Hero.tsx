@@ -191,15 +191,15 @@ export default function Hero() {
             </div>
             <div>
               <div className="text-3xl font-display font-bold text-gradient mb-1">
-                <AnimatedCounter end={98} suffix="%" />
-              </div>
-              <div className="text-sm text-white/50">Client Satisfaction</div>
-            </div>
-            <div>
-              <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={12} suffix="+" />
               </div>
               <div className="text-sm text-white/50">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-3xl font-display font-bold text-gradient mb-1">
+                <AnimatedCounter end={98} suffix="%" />
+              </div>
+              <div className="text-sm text-white/50">Client Satisfaction</div>
             </div>
           </motion.div>
         </div>
