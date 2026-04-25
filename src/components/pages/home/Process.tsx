@@ -53,9 +53,9 @@ export default function Process() {
         {/* Steps */}
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Connecting line (desktop) */}
-          <div className="hidden lg:block absolute top-7 left-7 right-7 h-px">
+          {/* <div className="hidden lg:block absolute top-7 left-7 right-7 h-px">
             <div className="w-full h-full bg-gradient-to-r from-transparent via-[rgba(79,142,247,0.3)] to-transparent" />
-          </div>
+          </div> */}
 
           {steps.map((step, i) => (
             <motion.div
@@ -79,6 +79,19 @@ export default function Process() {
                 {/* Pulse */}
                 <div className="absolute inset-0 rounded-full border border-[rgba(79,142,247,0.15)] animate-pulse-slow" />
               </div>
+
+              {/* Connector (desktop) */}
+              {i < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-[28px] left-[56px] right-[-2rem] h-px">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: i * 0.2 }}
+                    viewport={{once: true}}
+                    className="h-full origin-left bg-[rgba(79,142,247,0.35)]"
+                  />
+                </div>
+              )}
 
               <h3 className="font-display font-600 text-[#eeeef6] text-xl mb-3">
                 {step.title}
