@@ -41,21 +41,20 @@ export default function Testimonials() {
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const headingInView = useInView(headingRef, { once: true, margin: "-100px" });
-  const carouselInView = useInView(carouselRef, { once: true, margin: "-100px" });
+  const carouselInView = useInView(carouselRef, {
+    once: true,
+    margin: "-100px",
+  });
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);
 
   const handlePrev = () =>
-    setActiveIndex((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
+    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
 
   const handleNext = () =>
-    setActiveIndex((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
-    );
+    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
 
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     setIsDragging(true);
@@ -74,126 +73,88 @@ export default function Testimonials() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-32 bg-[#0a0a0c] overflow-hidden"
-    >
+    <section className="relative py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#2895f7]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00d9ff]/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-[#0d0d14]">
+        <div className="absolute inset-0 bg-dots opacity-50" />
+        <div className="absolute right-0 top-0 w-[500px] h-[500px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[100px]" />
+        <div className="absolute left-0 bottom-0 w-[400px] h-[400px] rounded-full bg-[rgba(122,175,255,0.03)] blur-[80px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
-        {/* Heading */}
+        {/* Header */}
         <motion.div
-          ref={headingRef}
-          initial={{ y: 50, opacity: 0 }}
-          animate={headingInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#2895f7]/10 text-[#2895f7] text-sm font-medium mb-6">
-            Testimonials
-          </span>
-
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            What Clients <span className="text-gradient">Say</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-5 uppercase tracking-wider">
+            Client Love
+          </div>
+          <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight">
+            What our <span className="text-gradient">clients say</span>
           </h2>
-
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Don&apos;t just take our word for it. Here&apos;s what our clients have to say
-            about working with us.
-          </p>
         </motion.div>
 
         {/* Carousel */}
-        <motion.div
-          ref={carouselRef}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={carouselInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        <div
           className="relative max-w-4xl mx-auto"
           style={{ perspective: "1000px" }}
           onMouseDown={handleDragStart}
           onMouseUp={handleDragEnd}
-          onMouseLeave={() =>
-            isDragging &&
-            handleDragEnd({ clientX: dragStartX.current } as React.MouseEvent)
-          }
           onTouchStart={handleDragStart}
           onTouchEnd={handleDragEnd}
         >
-          {/* Cards */}
-          <div className="relative h-[500px] flex items-center justify-center">
-            {testimonials.map((testimonial, index) => {
-              const offset = index - activeIndex;
-              const absOffset = Math.abs(offset);
-              const isActive = index === activeIndex;
-
-              const rotateY = offset * 45;
-              const translateZ = isActive ? 0 : -200;
-              const translateX = offset * 300;
-              const scale = isActive ? 1 : 0.8;
-              const opacity = absOffset > 1 ? 0 : isActive ? 1 : 0.5;
-              const blur = isActive ? 0 : 2;
+          <div className="relative h-[420px] flex items-center justify-center">
+            {testimonials.map((t, i) => {
+              const offset = i - activeIndex;
+              const abs = Math.abs(offset);
+              const isActive = i === activeIndex;
 
               return (
                 <motion.div
-                  key={testimonial.id}
+                  key={t.name}
                   animate={{
-                    x: translateX,
-                    rotateY,
-                    scale,
-                    opacity,
-                    filter: `blur(${blur}px)`,
-                    zIndex: isActive ? 10 : 5 - absOffset,
+                    x: offset * 280,
+                    scale: isActive ? 1 : 0.85,
+                    opacity: abs > 1 ? 0 : isActive ? 1 : 0.5,
+                    rotateY: offset * 35,
+                    zIndex: isActive ? 10 : 5 - abs,
+                    filter: `blur(${isActive ? 0 : 2}px)`,
                   }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeOut",
-                  }}
-                  className="absolute w-full max-w-lg cursor-grab active:cursor-grabbing"
-                  style={{
-                    transformStyle: "preserve-3d",
-                    translateZ,
-                  }}
+                  transition={{ duration: 0.45 }}
+                  className="absolute w-full max-w-md cursor-grab active:cursor-grabbing"
                 >
-                  <div className="relative p-8 rounded-3xl glass border border-white/10">
-                    <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-[#2895f7] flex items-center justify-center glow-blue">
-                      <Quote className="w-6 h-6 text-white" />
+                  <div className="relative p-8 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(13,13,20,0.9)]">
+                    {/* Quote */}
+                    <div className="w-9 h-9 rounded-lg bg-[rgba(79,142,247,0.1)] flex items-center justify-center mb-4">
+                      <Quote className="w-4 h-4 text-[#4f8ef7]" />
                     </div>
 
-                    <div className="flex gap-1 mb-6">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-5 h-5 fill-[#2895f7] text-[#2895f7]"
-                        />
-                      ))}
-                    </div>
-
-                    <p className="text-white/80 text-lg leading-relaxed mb-8">
-                      {testimonial.quote}
+                    <p className="text-[rgba(238,238,246,0.7)] text-base leading-relaxed mb-6">
+                      “{t.quote}”
                     </p>
 
-                    <div className="flex items-center gap-4">
+                    {/* Author */}
+                    <div className="flex items-center gap-3 pt-4 border-t border-[rgba(255,255,255,0.07)]">
                       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#2895f7]/30">
                         <Image
-                          src={testimonial.image}
-                          alt={testimonial.name}
+                          src={t.image}
+                          alt={t.name}
                           width={100}
                           height={100}
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div>
-                        <h4 className="text-white font-semibold">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-white/50 text-sm">
-                          {testimonial.role}
-                        </p>
+                        <div className="font-semibold text-[#eeeef6] text-sm">
+                          {t.name}
+                        </div>
+                        <div className="text-[rgba(238,238,246,0.4)] text-xs">
+                          {t.role}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -206,33 +167,31 @@ export default function Testimonials() {
           <div className="flex justify-center gap-4 mt-8">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full glass border border-white/20 flex items-center justify-center text-white hover:bg-white/10 hover:border-[#2895f7]/50 transition-all duration-300"
+              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft size={18} />
             </button>
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full glass border border-white/20 flex items-center justify-center text-white hover:bg-white/10 hover:border-[#2895f7]/50 transition-all duration-300"
+              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight size={18} />
             </button>
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
+          <div className="flex justify-center gap-2 mt-4">
+            {testimonials.map((_, i) => (
               <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === activeIndex
-                    ? "w-8 bg-[#2895f7]"
-                    : "bg-white/30 hover:bg-white/50"
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === activeIndex ? "w-6 bg-[#4f8ef7]" : "w-2 bg-white/30"
                 }`}
               />
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
