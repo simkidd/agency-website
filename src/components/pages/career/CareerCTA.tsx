@@ -1,41 +1,35 @@
-"use client"
+"use client";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-const CareerCTA = () => {
+export default function CareerCTA() {
   return (
-    <section className="py-20">
-      <div className="w-full px-6 lg:px-12 xl:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative p-12 lg:p-16 rounded-3xl overflow-hidden text-center"
-        >
-          <div className="absolute inset-0 bg-linear-to-br from-[#2895f7]/20 to-[#00d9ff]/10" />
-          <div className="absolute inset-0 bg-[#0a0a0c]/80" />
-
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Don&apos;t See the Right Fit?
-            </h2>
-            <p className="text-white/60 mb-8">
-              We&apos;re always interested in meeting talented people. Send us
-              your resume and we&apos;ll keep you in mind for future
-              opportunities.
-            </p>
-            <a
-              href="mailto:careers@technova.com"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#2895f7] text-white font-medium rounded-full hover:bg-[#0082f3] transition-all hover:glow-blue"
-            >
-              Send Your Resume
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </motion.div>
+    <section className="relative py-20 overflow-hidden">
+      <div className="absolute inset-0 bg-[#0d0d14]">
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-[rgba(79,142,247,0.05)] blur-[80px]" />
       </div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 w-full px-6 lg:px-12 xl:px-20 text-center"
+      >
+        <h2 className="font-display font-700 text-3xl lg:text-4xl text-[#eeeef6] mb-4">
+          Don&apos;t see your role?
+        </h2>
+        <p className="text-[rgba(238,238,246,0.5)] mb-8 max-w-md mx-auto">
+          We&apos;re always interested in meeting exceptional people. Send us
+          your story.
+        </p>
+        <Link
+          href="/careers/apply"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#4f8ef7] text-white font-semibold hover:bg-[#3a7de8] transition-all hover:shadow-[0_0_30px_rgba(79,142,247,0.4)]"
+        >
+          Get in Touch
+        </Link>
+      </motion.div>
     </section>
   );
-};
-
-export default CareerCTA;
+}
