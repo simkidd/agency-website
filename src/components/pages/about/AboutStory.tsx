@@ -35,9 +35,9 @@ const milestones = [
 export default function AboutStory() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[#07070a]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 bg-grid opacity-60" />
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[600px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[100px]" />
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[600px] rounded-full bg-accent/10 blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
@@ -52,12 +52,12 @@ export default function AboutStory() {
           {stats.map((s) => (
             <div
               key={s.label}
-              className="p-6 rounded-2xl border border-[rgba(255,255,255,0.07)] bg-[rgba(13,13,20,0.8)] text-center"
+              className="p-6 rounded-2xl border border-border bg-card/70 backdrop-blur-xl text-center"
             >
-              <div className="font-display font-700 text-4xl text-[#eeeef6] mb-1">
+              <div className="font-display  text-4xl text-foreground mb-1">
                 <AnimatedCounter end={s.num} suffix={s.suffix} />
               </div>
-              <div className="text-sm text-[rgba(238,238,246,0.4)]">
+              <div className="text-sm text-muted-foreground">
                 {s.label}
               </div>
             </div>
@@ -73,14 +73,14 @@ export default function AboutStory() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-6 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-medium mb-6 uppercase tracking-wider">
               Our Story
             </div>
-            <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight mb-6">
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground leading-tight mb-6">
               Built on craft,{" "}
               <span className="text-gradient">driven by outcomes</span>
             </h2>
-            <div className="space-y-5 text-[rgba(238,238,246,0.55)] text-base leading-relaxed">
+            <div className="space-y-5 text-muted-foreground text-base leading-relaxed">
               <p>
                 TechNova started in 2012 with a simple belief: that great
                 software is the product of equal parts technical rigour and
@@ -110,7 +110,7 @@ export default function AboutStory() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative"
           >
-            <div className="absolute left-[19px] top-3 bottom-3 w-px bg-gradient-to-b from-[rgba(79,142,247,0.4)] via-[rgba(79,142,247,0.2)] to-transparent" />
+            <div className="absolute left-[19px] top-3 bottom-3 w-px bg-linear-to-b from-accent/60 via-accent/30 to-transparent" />
             <div className="space-y-8">
               {milestones.map((m, i) => (
                 <motion.div
@@ -122,16 +122,16 @@ export default function AboutStory() {
                   className="flex gap-5 pl-2"
                 >
                   {/* Dot */}
-                  <div className="relative flex-shrink-0 mt-1">
-                    <div className="w-5 h-5 rounded-full border border-[rgba(79,142,247,0.4)] bg-[rgba(79,142,247,0.1)] flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#4f8ef7]" />
+                  <div className="relative shrink-0 mt-1">
+                    <div className="w-5 h-5 rounded-full border border-accent/50 bg-accent/10 flex items-center justify-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent" />
                     </div>
                   </div>
                   <div>
-                    <div className="font-display font-700 text-[#4f8ef7] text-sm mb-1">
+                    <div className="font-display text-accent text-sm mb-1">
                       {m.year}
                     </div>
-                    <p className="text-[rgba(238,238,246,0.55)] text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {m.event}
                     </p>
                   </div>

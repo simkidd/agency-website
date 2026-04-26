@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextTopLoader showSpinner={false} />
+        <NextTopLoader color="var(--accent)" showSpinner={false} />
         <Providers>
           <Suspense fallback={<LoadingScreen />}>{children}</Suspense>
         </Providers>
