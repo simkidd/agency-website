@@ -13,10 +13,10 @@ export default function Hero() {
         <div className="absolute inset-0 bg-grid opacity-80" />
 
         {/* Center radial glow */}
-        <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[700px] rounded-full bg-[rgba(79,142,247,0.07)] blur-[120px]" />
+        <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[700px] rounded-full bg-[rgba(214,185,140,0.08)] blur-[120px]" />
 
         {/* Decorative orb left */}
-        <div className="absolute -left-40 top-1/3 w-[500px] h-[500px] rounded-full bg-[rgba(214,185,140,0.07)] blur-[80px]" />
+        <div className="absolute -left-40 top-1/3 w-[500px] h-[500px] rounded-full bg-[rgba(214,185,140,0.05)] blur-[80px]" />
         {/* Decorative orb right */}
         <div className="absolute -right-40 bottom-1/4 w-[400px] h-[400px] rounded-full bg-[rgba(214,185,140,0.12)] blur-[80px]" />
 
@@ -25,7 +25,7 @@ export default function Hero() {
           {[400, 650, 900, 1150].map((size, i) => (
             <div
               key={size}
-              className="absolute rounded-full border border-[rgba(214,182,140,0.12)] top-1/2 left-1/2"
+              className="absolute rounded-full border border-[rgba(214,182,140,0.15)] top-1/2 left-1/2"
               style={{
                 width: size,
                 height: size,
@@ -67,9 +67,9 @@ export default function Hero() {
           <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
             <polygon
               points="30,5 55,50 5,50"
-              stroke="rgba(122,175,255,0.5)"
+              stroke="rgba(214,182,140,0.6)"
               strokeWidth="1"
-              fill="rgba(79,142,247,0.06)"
+              fill="rgba(214,182,140,0.12)"
             />
           </svg>
         </div>
@@ -82,13 +82,13 @@ export default function Hero() {
               cx="25"
               cy="25"
               r="20"
-              stroke="rgba(79,142,247,0.4)"
+              stroke="rgba(214,182,140,0.6)"
               strokeWidth="1"
               fill="none"
               strokeDasharray="4 4"
               className="animate-spin-slow"
             />
-            <circle cx="25" cy="25" r="5" fill="rgba(79,142,247,0.3)" />
+            <circle cx="25" cy="25" r="5" fill="rgba(214,182,140,0.12)" />
           </svg>
         </div>
       </div>
@@ -187,19 +187,25 @@ export default function Hero() {
               <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={150} suffix="+" />
               </div>
-              <div className="text-sm text-muted-foreground">Projects Delivered</div>
+              <div className="text-sm text-muted-foreground">
+                Projects Delivered
+              </div>
             </div>
             <div>
               <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={12} suffix="+" />
               </div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="text-sm text-muted-foreground">
+                Years Experience
+              </div>
             </div>
             <div>
               <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={98} suffix="%" />
               </div>
-              <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+              <div className="text-sm text-muted-foreground">
+                Client Satisfaction
+              </div>
             </div>
           </motion.div>
         </div>

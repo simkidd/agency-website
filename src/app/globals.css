@@ -237,12 +237,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--muted);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+  border-radius: 4px;
 }
 
 /* =========================

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "./Logo";
 
 const footerLinks = {
   Services: [
@@ -22,11 +23,11 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-[rgba(255,255,255,0.07)] overflow-hidden">
+    <footer className="relative border-t border-border overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#07070a]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 bg-grid-fine opacity-60" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[80px]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full bg-primary/5 blur-[80px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20 pt-16 pb-10">
@@ -34,23 +35,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-[rgba(79,142,247,0.15)] flex items-center justify-center">
-                <svg viewBox="0 0 32 32" fill="none" className="w-full h-full">
-                  <path d="M8 16L14 10L20 16L14 22L8 16Z" fill="#4f8ef7" />
-                  <path
-                    d="M16 8L24 16L16 24"
-                    stroke="#7aafff"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="font-display font-700 text-[#eeeef6] text-lg">
-                TechNova
-              </span>
+              <Logo className="h-12" />
             </Link>
-            <p className="text-[rgba(238,238,246,0.45)] text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
               We craft exceptional digital experiences that push the boundaries
               of design and technology.
             </p>
@@ -60,7 +47,7 @@ export default function Footer() {
                 <a
                   key={s}
                   href="#"
-                  className="w-9 h-9 rounded-lg bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.07)] flex items-center justify-center text-[rgba(238,238,246,0.4)] hover:text-[#4f8ef7] hover:border-[rgba(79,142,247,0.3)] hover:bg-[rgba(79,142,247,0.08)] transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-muted border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/10 transition-all duration-200"
                   aria-label={s}
                 >
                   <svg
@@ -89,7 +76,7 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="font-display font-600 text-[#eeeef6] text-sm mb-4">
+              <h4 className="font-display font-semibold text-foreground text-sm mb-4">
                 {section}
               </h4>
               <ul className="space-y-3">
@@ -97,7 +84,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[rgba(238,238,246,0.45)] hover:text-[#eeeef6] transition-colors duration-200"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -109,11 +96,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[rgba(238,238,246,0.3)]">
-            © {new Date().getFullYear()} TechNova. All rights reserved.
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Vanguard DS. All rights reserved.
           </p>
-          <p className="text-xs text-[rgba(238,238,246,0.3)]">
+          <p className="text-xs text-muted-foreground">
             Crafted with precision & passion
           </p>
         </div>

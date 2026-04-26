@@ -36,16 +36,6 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const headingRef = useRef<HTMLDivElement | null>(null);
-  const carouselRef = useRef<HTMLDivElement | null>(null);
-
-  const headingInView = useInView(headingRef, { once: true, margin: "-100px" });
-  const carouselInView = useInView(carouselRef, {
-    once: true,
-    margin: "-100px",
-  });
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);
@@ -75,10 +65,10 @@ export default function Testimonials() {
   return (
     <section className="relative py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#0d0d14]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 bg-dots opacity-50" />
-        <div className="absolute right-0 top-0 w-[500px] h-[500px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[100px]" />
-        <div className="absolute left-0 bottom-0 w-[400px] h-[400px] rounded-full bg-[rgba(122,175,255,0.03)] blur-[80px]" />
+        <div className="absolute right-0 top-0 w-[500px] h-[500px] rounded-full bg-[rgba(214,185,140,0.08)] blur-[100px]" />
+        <div className="absolute left-0 bottom-0 w-[400px] h-[400px] rounded-full bg-[rgba(214,185,140,0.05)] blur-[80px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
@@ -90,10 +80,10 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-5 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-medium mb-5 uppercase tracking-wider">
             Client Love
           </div>
-          <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight">
+          <h2 className="font-display font-700 text-4xl lg:text-5xl text-foreground leading-tight">
             What our <span className="text-gradient">clients say</span>
           </h2>
         </motion.div>
@@ -127,19 +117,19 @@ export default function Testimonials() {
                   transition={{ duration: 0.45 }}
                   className="absolute w-full max-w-md cursor-grab active:cursor-grabbing"
                 >
-                  <div className="relative p-8 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(13,13,20,0.9)]">
+                  <div className="relative p-8 rounded-2xl border border-border bg-card/80 backdrop-blur-xl">
                     {/* Quote */}
-                    <div className="w-9 h-9 rounded-lg bg-[rgba(79,142,247,0.1)] flex items-center justify-center mb-4">
-                      <Quote className="w-4 h-4 text-[#4f8ef7]" />
+                    <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                      <Quote className="w-4 h-4 text-accent" />
                     </div>
 
-                    <p className="text-[rgba(238,238,246,0.7)] text-base leading-relaxed mb-6">
+                    <p className="text-muted-foreground text-base leading-relaxed mb-6">
                       “{t.quote}”
                     </p>
 
                     {/* Author */}
                     <div className="flex items-center gap-3 pt-4 border-t border-[rgba(255,255,255,0.07)]">
-                      <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#2895f7]/30">
+                      <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-accent/30">
                         <Image
                           src={t.image}
                           alt={t.name}
@@ -149,10 +139,10 @@ export default function Testimonials() {
                         />
                       </div>
                       <div>
-                        <div className="font-semibold text-[#eeeef6] text-sm">
+                        <div className="font-semibold text-foreground text-sm">
                           {t.name}
                         </div>
-                        <div className="text-[rgba(238,238,246,0.4)] text-xs">
+                        <div className="text-muted-foreground text-xs">
                           {t.role}
                         </div>
                       </div>
@@ -167,13 +157,13 @@ export default function Testimonials() {
           <div className="flex justify-center gap-4 mt-8">
             <button
               onClick={handlePrev}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-accent/10 transition"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={handleNext}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-accent/10 transition"
             >
               <ChevronRight size={18} />
             </button>
@@ -186,7 +176,7 @@ export default function Testimonials() {
                 key={i}
                 onClick={() => setActiveIndex(i)}
                 className={`h-2 rounded-full transition-all ${
-                  i === activeIndex ? "w-6 bg-[#4f8ef7]" : "w-2 bg-white/30"
+                  i === activeIndex ? "w-6 bg-accent" : "w-2 bg-muted"
                 }`}
               />
             ))}

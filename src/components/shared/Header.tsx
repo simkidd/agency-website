@@ -112,7 +112,7 @@ const Header = () => {
       <div className="w-full px-6 lg:px-12 xl:px-20">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5">
             <Logo className="h-10" />
           </Link>
 
