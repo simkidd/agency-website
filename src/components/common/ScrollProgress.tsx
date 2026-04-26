@@ -26,7 +26,7 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed bottom-8 right-8 w-14 h-14 rounded-full glass border border-white/10 items-center justify-center cursor-pointer z-50 hidden lg:flex"
+      className="fixed bottom-8 right-8 w-14 h-14 rounded-full glass border border-border items-center justify-center cursor-pointer z-50 hidden lg:flex"
       onClick={handleClick}
       onMouseEnter={() => setShowPercentage(true)}
       onMouseLeave={() => setShowPercentage(false)}
@@ -41,7 +41,7 @@ export default function ScrollProgress() {
           cy="28"
           r="24"
           fill="none"
-          stroke="rgba(255,255,255,0.1)"
+          stroke="var(--border)"
           strokeWidth="2"
         />
         <motion.circle
@@ -64,21 +64,21 @@ export default function ScrollProgress() {
             x2="100%"
             y2="0%"
           >
-            <stop offset="0%" stopColor="#2895f7" />
-            <stop offset="100%" stopColor="#00d9ff" />
+            <stop offset="0%" stopColor="var(--primary)" />
+            <stop offset="100%" stopColor="var(--accent)" />
           </linearGradient>
         </defs>
       </svg>
 
       {/* Percentage or arrow */}
       <motion.span
-        className="text-xs font-medium text-white"
+        className="text-xs font-medium text-foreground"
         animate={{ opacity: showPercentage ? 1 : 0 }}
       >
         {percentage}%
       </motion.span>
       <motion.svg
-        className="absolute w-4 h-4 text-white/60"
+        className="absolute w-4 h-4 text-foreground/60"
         animate={{ opacity: showPercentage ? 0 : 1 }}
         viewBox="0 0 24 24"
         fill="none"
