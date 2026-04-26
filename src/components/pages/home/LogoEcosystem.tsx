@@ -18,11 +18,11 @@ export default function LogoEcosystem() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 bg-[#0a0a0c] overflow-hidden"
+      className="relative py-20 bg-background overflow-hidden"
     >
       {/* Header */}
       <div className="w-full px-6 lg:px-12 xl:px-20 mb-12">
-        <p className="text-center text-white/40 text-sm uppercase tracking-widest">
+        <p className="text-center text-muted-foreground text-sm uppercase tracking-widest">
           Trusted by Industry Leaders
         </p>
       </div>
@@ -30,18 +30,18 @@ export default function LogoEcosystem() {
       {/* Logo track */}
       <div className="relative">
         <div className="relative overflow-hidden" style={{ transform: "rotateX(5deg)" }}>
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-[#0a0a0c] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-[#0a0a0c] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
 
           <div className="flex gap-16 py-8 animate-scroll">
             {[...logos, ...logos].map((logo, idx) => (
               <div
                 key={`${logo.name}-${idx}`}
-                className="flex items-center justify-center w-32 h-16 opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-pointer group"
+                className="flex items-center justify-center w-32 h-16 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer group"
               >
                 <svg
                   viewBox="0 0 24 24"
-                  className="w-12 h-12 fill-white group-hover:fill-[#2895f7] transition-colors duration-300"
+                  className="w-12 h-12 fill-muted-foreground group-hover:fill-accent transition-colors duration-300"
                 >
                   <path d={logo.svg} />
                 </svg>
@@ -53,7 +53,7 @@ export default function LogoEcosystem() {
 
       {/* Bottom border */}
       <div className="w-full px-6 lg:px-12 xl:px-20 mt-12">
-        <div className="h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
+        <div className="h-px bg-linear-to-r from-transparent via-border to-transparent" />
       </div>
 
       

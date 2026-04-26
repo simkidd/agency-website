@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* ─── Background layers ─── */}
-      <div className="absolute inset-0 bg-[#07070a]">
+      <div className="absolute inset-0 bg-background">
         {/* Grid */}
         <div className="absolute inset-0 bg-grid opacity-80" />
 
@@ -16,16 +16,16 @@ export default function Hero() {
         <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[700px] rounded-full bg-[rgba(79,142,247,0.07)] blur-[120px]" />
 
         {/* Decorative orb left */}
-        <div className="absolute -left-40 top-1/3 w-[500px] h-[500px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[80px]" />
+        <div className="absolute -left-40 top-1/3 w-[500px] h-[500px] rounded-full bg-[rgba(214,185,140,0.07)] blur-[80px]" />
         {/* Decorative orb right */}
-        <div className="absolute -right-40 bottom-1/4 w-[400px] h-[400px] rounded-full bg-[rgba(122,175,255,0.04)] blur-[80px]" />
+        <div className="absolute -right-40 bottom-1/4 w-[400px] h-[400px] rounded-full bg-[rgba(214,185,140,0.12)] blur-[80px]" />
 
         {/* Concentric rings */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
           {[400, 650, 900, 1150].map((size, i) => (
             <div
               key={size}
-              className="absolute rounded-full border border-[rgba(79,142,247,0.06)] top-1/2 left-1/2"
+              className="absolute rounded-full border border-[rgba(214,182,140,0.12)] top-1/2 left-1/2"
               style={{
                 width: size,
                 height: size,
@@ -46,7 +46,7 @@ export default function Hero() {
               width="60"
               height="60"
               rx="8"
-              stroke="rgba(79,142,247,0.6)"
+              stroke="rgba(214,182,140,0.6)"
               strokeWidth="1"
               fill="none"
             />
@@ -56,7 +56,7 @@ export default function Hero() {
               width="30"
               height="30"
               rx="4"
-              fill="rgba(79,142,247,0.12)"
+              fill="rgba(214,182,140,0.12)"
             />
           </svg>
         </div>
@@ -104,7 +104,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(79,142,247,0.25)] bg-[rgba(79,142,247,0.08)] text-[#4f8ef7] text-sm font-medium mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/10 text-accent text-sm font-medium mb-8"
           >
             <Sparkles className="w-3.5 h-3.5" />
             Digital Agency — Est. 2012
@@ -115,7 +115,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display font-800 text-[clamp(3rem,8vw,6.5rem)] leading-[1.0] tracking-tight text-[#eeeef6] mb-8"
+            className="font-display font-800 text-[clamp(3rem,8vw,6.5rem)] leading-[1.0] tracking-tight text-foreground mb-8"
           >
             We craft{" "}
             <span className="relative inline-block">
@@ -134,7 +134,7 @@ export default function Hero() {
               >
                 <path
                   d="M0 6 Q50 0 100 4 Q150 8 200 2"
-                  stroke="rgba(79,142,247,0.5)"
+                  stroke="rgba(230, 207, 167, 0.942)"
                   strokeWidth="2"
                   fill="none"
                   strokeLinecap="round"
@@ -148,7 +148,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-[rgba(238,238,246,0.55)] text-xl leading-relaxed max-w-2xl mb-12"
+            className="text-muted-foreground text-xl leading-relaxed max-w-2xl mb-12"
           >
             We&apos;re a team of designers, engineers, and strategists who
             transform ambitious ideas into remarkable digital products.
@@ -163,14 +163,14 @@ export default function Hero() {
           >
             <Link
               href="/#contact"
-              className="group flex items-center gap-2 px-7 py-4 rounded-xl bg-[#4f8ef7] text-white font-semibold text-base hover:bg-[#3a7de8] transition-all duration-200 hover:shadow-[0_0_40px_rgba(79,142,247,0.5)]"
+              className="group flex items-center gap-2 px-7 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-all duration-200 hover:shadow-lg"
             >
               Start a Project
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/#case-studies"
-              className="flex items-center gap-2 px-7 py-4 rounded-xl border border-[rgba(255,255,255,0.1)] text-[rgba(238,238,246,0.7)] font-semibold text-base hover:border-[rgba(255,255,255,0.2)] hover:text-[#eeeef6] transition-all duration-200"
+              className="flex items-center gap-2 px-7 py-4 rounded-xl border border-border text-muted-foreground font-semibold text-base hover:border-accent hover:text-foreground transition-all duration-200"
             >
               View our Work
             </Link>
@@ -187,26 +187,26 @@ export default function Hero() {
               <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={150} suffix="+" />
               </div>
-              <div className="text-sm text-white/50">Projects Delivered</div>
+              <div className="text-sm text-muted-foreground">Projects Delivered</div>
             </div>
             <div>
               <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={12} suffix="+" />
               </div>
-              <div className="text-sm text-white/50">Years Experience</div>
+              <div className="text-sm text-muted-foreground">Years Experience</div>
             </div>
             <div>
               <div className="text-3xl font-display font-bold text-gradient mb-1">
                 <AnimatedCounter end={98} suffix="%" />
               </div>
-              <div className="text-sm text-white/50">Client Satisfaction</div>
+              <div className="text-sm text-muted-foreground">Client Satisfaction</div>
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#07070a] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-lnear-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }
