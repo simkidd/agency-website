@@ -1,70 +1,55 @@
 "use client";
 import { motion } from "framer-motion";
 import { Linkedin, Twitter } from "lucide-react";
+import Image from "next/image";
 
 const team = [
   {
     name: "Alex Chen",
     role: "CEO & Founder",
-    initials: "AC",
-    color: "#4f8ef7",
-    bg: "from-[#0f1929] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     bio: "Previously engineering lead at Stripe. Obsessed with systems that scale.",
   },
   {
     name: "Sarah Mitchell",
     role: "Creative Director",
-    initials: "SM",
-    color: "#a5c8ff",
-    bg: "from-[#0d1320] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
     bio: "15 years designing products people actually want to use. Ex-Airbnb.",
   },
   {
     name: "David Park",
     role: "Head of Engineering",
-    initials: "DP",
-    color: "#7fd4c1",
-    bg: "from-[#0b1a18] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/men/65.jpg",
     bio: "Full-stack and infrastructure fanatic. Contributor to React and Next.js.",
   },
   {
     name: "Maya Johnson",
     role: "Head of AI",
-    initials: "MJ",
-    color: "#c084fc",
-    bg: "from-[#160f25] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
     bio: "PhD in ML from Stanford. Turned researcher into pragmatic product builder.",
   },
   {
     name: "James Liu",
     role: "Lead Product Designer",
-    initials: "JL",
-    color: "#f7c44f",
-    bg: "from-[#1a150a] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/men/22.jpg",
     bio: "Motion-obsessed designer. Everything he ships feels alive.",
   },
   {
     name: "Priya Sharma",
     role: "Head of Growth",
-    initials: "PS",
-    color: "#f7774f",
-    bg: "from-[#1a0f0a] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/women/12.jpg",
     bio: "Grew three startups from zero to Series B. Data is her love language.",
   },
   {
     name: "Tom Ellis",
     role: "Senior Engineer",
-    initials: "TE",
-    color: "#7aafff",
-    bg: "from-[#0d1320] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
     bio: "Backend systems and performance optimisation specialist. Rust enthusiast.",
   },
   {
     name: "Rina Tanaka",
     role: "UX Researcher",
-    initials: "RT",
-    color: "#7fd4c1",
-    bg: "from-[#0b1a18] to-[#0d0d14]",
+    image: "https://randomuser.me/api/portraits/women/50.jpg",
     bio: "Turns user interviews and usability tests into product decisions that stick.",
   },
 ];
@@ -72,9 +57,9 @@ const team = [
 export default function TeamGrid() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[#07070a]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 bg-grid-fine opacity-40" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[rgba(79,142,247,0.03)] blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-accent/10 blur-[120px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
@@ -85,10 +70,10 @@ export default function TeamGrid() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-5 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-medium mb-5 uppercase tracking-wider">
             The Team
           </div>
-          <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight">
+          <h2 className="font-display font-700 text-4xl lg:text-5xl text-foreground leading-tight">
             People behind <span className="text-gradient">the work</span>
           </h2>
         </motion.div>
@@ -101,41 +86,35 @@ export default function TeamGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className={`group relative rounded-2xl border border-[rgba(255,255,255,0.07)] bg-gradient-to-br ${member.bg} hover:border-[rgba(79,142,247,0.2)] transition-all duration-300 overflow-hidden p-6`}
+              className={`group relative rounded-2xl border border-border bg-linear-to-br bg-card/70 backdrop-blur-xl hover:border-accent/20 transition-all duration-300 overflow-hidden p-6`}
             >
               {/* Glow on hover */}
-              <div
-                className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-15 transition-opacity duration-500 blur-[40px]"
-                style={{ background: member.color }}
-              />
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-15 transition-opacity duration-500 blur-[40px] bg-accent-foreground/20" />
 
               {/* Avatar */}
               <div className="relative mb-5">
-                <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-display font-700 text-white"
-                  style={{
-                    background: `linear-gradient(135deg, ${member.color}30, ${member.color}10)`,
-                    border: `1px solid ${member.color}25`,
-                  }}
-                >
-                  {member.initials}
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border border-border">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
                 {/* Online dot */}
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#07070a] flex items-center justify-center">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ background: member.color }}
-                  />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-background flex items-center justify-center">
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                 </div>
               </div>
 
-              <h3 className="font-display font-600 text-[#eeeef6] text-base mb-0.5">
+              <h3 className="font-display font-600 text-foreground text-base mb-0.5">
                 {member.name}
               </h3>
-              <p className="text-xs mb-3" style={{ color: member.color }}>
+              <p className="text-xs mb-3">
                 {member.role}
               </p>
-              <p className="text-xs text-[rgba(238,238,246,0.4)] leading-relaxed mb-4">
+              <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                 {member.bio}
               </p>
 
@@ -145,8 +124,7 @@ export default function TeamGrid() {
                   <a
                     key={j}
                     href="#"
-                    className="w-7 h-7 rounded-lg flex items-center justify-center text-[rgba(238,238,246,0.4)] hover:text-[#eeeef6] transition-colors"
-                    style={{ background: "rgba(255,255,255,0.05)" }}
+                    className="w-7 h-7 rounded-lg flex items-center justify-center text-muted-foreground bg-white/5 hover:text-foreground transition-colors"
                   >
                     <Icon className="w-3.5 h-3.5" />
                   </a>
@@ -162,19 +140,19 @@ export default function TeamGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6 p-6 rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(13,13,20,0.6)] flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="mt-6 p-6 rounded-2xl border border-border bg-card/60 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div>
-            <p className="font-display font-600 text-[#eeeef6] mb-1">
+            <p className="font-display font-600 text-foreground mb-1">
               We&apos;re growing
             </p>
-            <p className="text-[rgba(238,238,246,0.45)] text-sm">
+            <p className="text-muted-foreground text-sm">
               We&apos;re always looking for exceptional people to join the team.
             </p>
           </div>
           <a
             href="/careers"
-            className="flex-shrink-0 px-6 py-3 rounded-xl border border-[rgba(79,142,247,0.3)] text-[#4f8ef7] text-sm font-medium hover:bg-[rgba(79,142,247,0.08)] transition-all whitespace-nowrap"
+            className="shrink-0 px-6 py-3 rounded-xl border border-accent/30 text-accent text-sm font-medium hover:bg-accent/10 transition-all whitespace-nowrap"
           >
             View Open Roles →
           </a>
