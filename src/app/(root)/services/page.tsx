@@ -15,7 +15,7 @@ const ServicesPage = () => {
       />
       <ServicesDetail />
       <OurApproach />
-      <Pricing />
+      {/* <Pricing /> */}
       <ServicesCTA />
     </>
   );
