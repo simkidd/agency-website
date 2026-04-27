@@ -7,46 +7,40 @@ const values = [
     icon: Flame,
     title: "Craft is everything",
     desc: "We obsess over details that most people never notice — because the ones who do notice are your best customers.",
-    accent: "#f7774f",
   },
   {
     icon: Target,
     title: "Outcomes over output",
     desc: "We measure success by your business results, not by the number of screens we designed or lines of code we shipped.",
-    accent: "#4f8ef7",
   },
   {
     icon: Users,
     title: "People first",
     desc: "We build for humans. Every decision — from information architecture to API design — starts with the person using it.",
-    accent: "#7aafff",
   },
   {
     icon: Telescope,
     title: "Long-term thinking",
     desc: "We resist the shortcuts that create technical debt and design patterns that age badly. We build things that last.",
-    accent: "#a5c8ff",
   },
   {
     icon: MessageSquare,
     title: "Radical transparency",
     desc: "We tell you when something won't work, when we're behind, and when we think there's a better approach. Always.",
-    accent: "#7fd4c1",
   },
   {
     icon: Repeat,
     title: "Continuous improvement",
     desc: "We run retrospectives, share knowledge, and invest in getting better at our craft — so every project benefits from the last.",
-    accent: "#c084fc",
   },
 ];
 
 export default function AboutValues() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[#0d0d14]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 bg-dots opacity-40" />
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[100px]" />
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
@@ -57,10 +51,10 @@ export default function AboutValues() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-5 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-medium mb-5 uppercase tracking-wider">
             What We Believe
           </div>
-          <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight">
+          <h2 className="font-display font-700 text-4xl lg:text-5xl text-foreground leading-tight">
             Our{" "}
             <span className="text-gradient">values</span>
           </h2>
@@ -74,22 +68,20 @@ export default function AboutValues() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="group p-7 rounded-2xl border border-[rgba(255,255,255,0.07)] bg-[rgba(13,13,20,0.8)] hover:border-[rgba(79,142,247,0.15)] transition-all duration-300 overflow-hidden relative"
+              className="group p-7 rounded-2xl border border-border bg-card/70 hover:border-accent/20 backdrop-blur-xl transition-all duration-300 overflow-hidden relative"
             >
               {/* Corner glow */}
               <div
-                className="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[30px]"
-                style={{ background: v.accent }}
+                className="absolute -top-8 -right-8 w-24 h-24 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500 blur-[30px] bg-accent"
               />
 
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: `${v.accent}15`, border: `1px solid ${v.accent}30` }}
+                className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 border border-accent/20 bg-accent/10"
               >
-                <v.icon className="w-5 h-5" style={{ color: v.accent }} />
+                <v.icon className="w-5 h-5 text-accent" />
               </div>
-              <h3 className="font-display font-600 text-[#eeeef6] text-lg mb-3">{v.title}</h3>
-              <p className="text-[rgba(238,238,246,0.48)] text-sm leading-relaxed">{v.desc}</p>
+              <h3 className="font-display font-600 text-foreground text-lg mb-3">{v.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
             </motion.div>
           ))}
         </div>
