@@ -56,9 +56,9 @@ const tiers = [
 export default function Pricing() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[#07070a]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 bg-dots opacity-40" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-[rgba(79,142,247,0.04)] blur-[100px]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-accent/10 blur-[100px]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
@@ -69,15 +69,15 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(79,142,247,0.2)] bg-[rgba(79,142,247,0.07)] text-[#4f8ef7] text-xs font-medium mb-5 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-medium mb-5 uppercase tracking-wider">
             Pricing
           </div>
-          <h2 className="font-display font-700 text-4xl lg:text-5xl text-[#eeeef6] leading-tight">
-            Transparent{" "}
-            <span className="text-gradient">pricing</span>
+          <h2 className="font-display font-700 text-4xl lg:text-5xl text-foreground leading-tight">
+            Transparent <span className="text-gradient">pricing</span>
           </h2>
-          <p className="text-[rgba(238,238,246,0.45)] mt-4 max-w-lg mx-auto">
-            No hidden fees, no surprises. Every engagement is scoped and agreed upfront.
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
+            No hidden fees, no surprises. Every engagement is scoped and agreed
+            upfront.
           </p>
         </motion.div>
 
@@ -91,45 +91,49 @@ export default function Pricing() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`relative rounded-2xl p-8 flex flex-col overflow-hidden transition-all ${
                 tier.highlight
-                  ? "border border-[rgba(79,142,247,0.4)] bg-[rgba(13,13,30,0.95)]"
-                  : "border border-[rgba(255,255,255,0.07)] bg-[rgba(13,13,20,0.9)]"
+                  ? "border border-accent/40 bg-card"
+                  : "border border-border bg-card/80"
               }`}
             >
               {/* Top accent line for highlighted */}
               {tier.highlight && (
-                <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#4f8ef7] to-transparent" />
+                <div className="absolute top-0 left-6 right-6 h-px bg-linear-to-r from-transparent via-accent to-transparent" />
               )}
 
               {/* Subtle glow for highlighted */}
               {tier.highlight && (
-                <div className="absolute inset-0 bg-[rgba(79,142,247,0.03)] rounded-2xl pointer-events-none" />
+                <div className="absolute inset-0 bg-accent/10 rounded-2xl pointer-events-none" />
               )}
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* Badge for highlighted */}
                 {tier.highlight && (
-                  <div className="inline-flex self-start items-center px-3 py-1 rounded-full bg-[rgba(79,142,247,0.15)] border border-[rgba(79,142,247,0.3)] text-[#4f8ef7] text-xs font-medium mb-4">
+                  <div className="inline-flex self-start items-center px-3 py-1 rounded-full bg-accent/15 border-accent/30 text-accent text-xs font-medium mb-4">
                     Most Popular
                   </div>
                 )}
 
-                <p className="text-xs text-[rgba(238,238,246,0.35)] uppercase tracking-widest mb-2 font-medium">
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2 font-medium">
                   {tier.name}
                 </p>
                 <div className="mb-1">
-                  <span className="font-display font-700 text-3xl text-[#eeeef6]">{tier.price}</span>
+                  <span className="font-display font-700 text-3xl text-foreground">
+                    {tier.price}
+                  </span>
                 </div>
-                <p className="text-xs text-[rgba(238,238,246,0.35)] mb-5">{tier.period}</p>
+                <p className="text-xs text-muted-foreground mb-5">
+                  {tier.period}
+                </p>
 
-                <p className="text-sm text-[rgba(238,238,246,0.5)] leading-relaxed mb-6 border-b border-[rgba(255,255,255,0.06)] pb-6">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6 border-b border-border pb-6">
                   {tier.desc}
                 </p>
 
                 <ul className="space-y-3 mb-8 flex-1">
                   {tier.features.map((f) => (
                     <li key={f} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#4f8ef7] flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-[rgba(238,238,246,0.6)]">{f}</span>
+                      <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -138,8 +142,8 @@ export default function Pricing() {
                   href="/#contact"
                   className={`group flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-all ${
                     tier.highlight
-                      ? "bg-[#4f8ef7] text-white hover:bg-[#3a7de8] hover:shadow-[0_0_24px_rgba(79,142,247,0.4)]"
-                      : "border border-[rgba(255,255,255,0.1)] text-[rgba(238,238,246,0.7)] hover:border-[rgba(79,142,247,0.3)] hover:text-[#eeeef6]"
+                      ? "bg-accent text-foreground hover:bg-accent/90 hover:shadow-[0_0_24px_hsl(var(--accent)/0.35)]"
+                      : "border border-border text-muted-foreground hover:border-accent/30 hover:text-foreground"
                   }`}
                 >
                   {tier.cta === "Most Popular" ? "Get Started" : tier.cta}
@@ -155,9 +159,10 @@ export default function Pricing() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center text-xs text-[rgba(238,238,246,0.25)] mt-8"
+          className="text-center text-xs text-muted-foreground/70 mt-8"
         >
-          All prices in USD. Retainer options available. Book a free 30-min intro call to scope your project.
+          All prices in USD. Retainer options available. Book a free 30-min
+          intro call to scope your project.
         </motion.p>
       </div>
     </section>
