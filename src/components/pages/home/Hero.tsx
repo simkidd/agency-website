@@ -163,14 +163,14 @@ export default function Hero() {
           >
             <Link
               href="/#contact"
-              className="group flex items-center gap-2 px-7 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-all duration-200 hover:shadow-lg"
+              className="group flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:bg-primary/90 transition-all duration-200 hover:shadow-lg w-full sm:w-auto"
             >
               Start a Project
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/#case-studies"
-              className="flex items-center gap-2 px-7 py-4 rounded-xl border border-border text-muted-foreground font-semibold text-base hover:border-accent hover:text-foreground transition-all duration-200"
+              className="flex items-center justify-center gap-2 px-7 py-4 rounded-xl border border-border text-muted-foreground font-semibold text-base hover:border-accent hover:text-foreground transition-all duration-200 w-full sm:w-auto"
             >
               View our Work
             </Link>

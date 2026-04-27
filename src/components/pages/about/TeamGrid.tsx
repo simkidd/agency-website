@@ -102,10 +102,7 @@ export default function TeamGrid() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                {/* Online dot */}
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-background flex items-center justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                </div>
+               
               </div>
 
               <h3 className="font-display font-600 text-foreground text-base mb-0.5">
@@ -119,7 +116,7 @@ export default function TeamGrid() {
               </p>
 
               {/* Social links */}
-              <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="flex gap-2 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {[Linkedin, Twitter].map((Icon, j) => (
                   <a
                     key={j}

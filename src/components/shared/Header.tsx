@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { motion, Variants } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { motion, Variants } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 interface INav {
   label: string;
