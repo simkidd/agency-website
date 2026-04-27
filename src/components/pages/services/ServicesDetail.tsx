@@ -113,7 +113,7 @@ export default function ServicesDetail() {
               whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: 0 }}
-              className={`group relative rounded-2xl border border-border bg-lineaer-to-br hover:border-primary/30 transition-all duration-500 overflow-hidden`}
+              className={`group relative rounded-2xl border border-border bg-lineaer-to-br hover:border-accent/30 transition-all duration-500 overflow-hidden`}
             >
               {/* Background pattern */}
               <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none" />
