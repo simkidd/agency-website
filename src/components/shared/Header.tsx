@@ -20,7 +20,7 @@ const navLinks: INav[] = [
   },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Careers", href: "/careers" },
+  // { label: "Careers", href: "/careers" },
 ];
 
 // ========================
@@ -107,7 +107,7 @@ const Header = () => {
       variants={navVariants}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled ? "glass py-4 border-b border-border" : "py-6 bg-transparent"
-      }`}
+      } ${isMobileMenuOpen ? "glass border-b border-border" : ""}`}
     >
       <div className="w-full px-6 lg:px-12 xl:px-20">
         <div className="flex items-center justify-between">

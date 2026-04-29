@@ -132,7 +132,7 @@ export default function TeamGrid() {
         </div>
 
         {/* Hiring note */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -153,7 +153,7 @@ export default function TeamGrid() {
           >
             View Open Roles →
           </a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
