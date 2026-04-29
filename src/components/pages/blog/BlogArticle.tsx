@@ -202,7 +202,7 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                       <motion.span
                         key={tag}
                         whileHover={{ scale: 1.05 }}
-                        className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/5 text-white/60 text-sm"
+                        className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/5 text-muted-foreground text-sm"
                       >
                         <Tag className="w-3 h-3" />
                         {tag}
