@@ -20,7 +20,7 @@ const navLinks: INav[] = [
   },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Careers", href: "/careers" },
+  // { label: "Careers", href: "/careers" },
 ];
 
 // ========================
