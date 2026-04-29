@@ -26,7 +26,7 @@ export default function BlogCTA() {
           <input
             type="email"
             placeholder="Your email address"
-            className="flex-1 px-4 py-3 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground text-sm focus:border-accent focus:outline-none transition-all"
+            className="flex-1 px-4 py-3 rounded-xl bg-background/50 border border-border text-foreground placeholder:text-muted-foreground text-sm focus:border-accent focus:outline-none focus:bg-accent/5  transition-all"
           />
           <button className="px-6 py-3 rounded-xl bg-accent font-medium text-sm hover:bg-accent/90 text-accent-foreground transition-all whitespace-nowrap cursor-pointer">
             Subscribe

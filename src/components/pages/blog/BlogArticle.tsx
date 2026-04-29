@@ -188,14 +188,14 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                 viewport={{ once: true, margin: "-80px" }}
                 className="lg:col-span-8"
               >
-                <motion.div variants={fadeUp} className="text-white">
+                <motion.div variants={fadeUp} className="t">
                   <TextContent content={article.content} />
                 </motion.div>
 
                 {/* Tags */}
                 <motion.div
                   variants={fadeUp}
-                  className="mt-12 pt-8 border-t border-white/10"
+                  className="mt-12 pt-8 border-t border-border"
                 >
                   <div className="flex flex-wrap gap-2">
                     {article.tags.map((tag) => (
@@ -216,15 +216,15 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                   variants={fadeUp}
                   className="mt-8 flex items-center gap-6"
                 >
-                  <button className="flex items-center gap-2 text-white/60 hover:text-[#2895f7] transition-colors">
+                  <button className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors">
                     <ThumbsUp className="w-5 h-5" />
                     <span>{article.likes}</span>
                   </button>
-                  <button className="flex items-center gap-2 text-white/60 hover:text-[#2895f7] transition-colors">
+                  <button className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors">
                     <MessageCircle className="w-5 h-5" />
                     <span>{article.comments}</span>
                   </button>
-                  <button className="flex items-center gap-2 text-white/60 hover:text-[#2895f7] transition-colors">
+                  <button className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors">
                     <Bookmark className="w-5 h-5" />
                     <span>Save</span>
                   </button>
@@ -233,21 +233,21 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                 {/* Share */}
                 <motion.div
                   variants={fadeUp}
-                  className="mt-8 p-6 rounded-2xl glass border border-white/10"
+                  className="mt-8 p-6 rounded-2xl glass border border-border"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-white font-medium flex items-center gap-2">
+                    <span className="text-foregroi font-medium flex items-center gap-2">
                       <Share2 className="w-5 h-5" />
                       Share this article
                     </span>
                     <div className="flex gap-3">
-                      <button className="w-10 h-10 rounded-full bg-[#1DA1F2]/20 flex items-center justify-center text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white transition-all">
+                      <button className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent hover:bg-accent/30 transition-all">
                         <Twitter className="w-5 h-5" />
                       </button>
-                      <button className="w-10 h-10 rounded-full bg-[#0A66C2]/20 flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all">
+                      <button className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent hover:bg-accent/30 transition-all">
                         <Linkedin className="w-5 h-5" />
                       </button>
-                      <button className="w-10 h-10 rounded-full bg-[#1877F2]/20 flex items-center justify-center text-[#1877F2] hover:bg-[#1877F2] hover:text-white transition-all">
+                      <button className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent hover:bg-accent/30 transition-all">
                         <Facebook className="w-5 h-5" />
                       </button>
                     </div>
@@ -257,7 +257,7 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                 {/* Author Bio */}
                 <motion.div
                   variants={fadeUp}
-                  className="mt-8 p-6 rounded-2xl glass border border-white/10"
+                  className="mt-8 p-6 rounded-2xl glass border border-border"
                 >
                   <div className="flex items-start gap-4">
                     <Image
@@ -268,13 +268,13 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                       height={100}
                     />
                     <div>
-                      <h3 className="text-white font-semibold text-lg">
+                      <h3 className=" font-semibold text-lg">
                         {article.author}
                       </h3>
-                      <p className="text-[#2895f7] text-sm mb-2">
+                      <p className="text-accent text-sm mb-2">
                         {article.authorRole}
                       </p>
-                      <p className="text-white/60 text-sm">
+                      <p className="text-muted-foreground text-sm">
                         Passionate about creating exceptional digital
                         experiences and sharing knowledge with the community.
                         Follow for more insights on technology and design.
@@ -293,7 +293,7 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="sticky top-32"
                 >
-                  <h3 className="text-white font-semibold text-lg mb-6">
+                  <h3 className=" font-semibold text-lg mb-6">
                     Related Articles
                   </h3>
                   <motion.div
@@ -318,13 +318,13 @@ const BlogArticle = ({ postId }: { postId: string }) => {
                             />
                           </div>
                           <div>
-                            <span className="text-[#2895f7] text-xs">
+                            <span className="text-accent text-xs">
                               {related.category}
                             </span>
-                            <h4 className="text-white text-sm font-medium line-clamp-2 group-hover:text-gradient transition-all">
+                            <h4 className=" text-sm font-medium line-clamp-2 group-hover:text-gradient transition-all">
                               {related.title}
                             </h4>
-                            <span className="text-white/40 text-xs">
+                            <span className="text-muted-foreground text-xs">
                               {related.readTime}
                             </span>
                           </div>
@@ -335,18 +335,18 @@ const BlogArticle = ({ postId }: { postId: string }) => {
 
                   {/* Newsletter */}
                   <div className="mt-8 p-6 rounded-2xl glass border border-white/10">
-                    <h3 className="text-white font-semibold mb-2">
+                    <h3 className=" font-semibold mb-2">
                       Subscribe to our newsletter
                     </h3>
-                    <p className="text-white/50 text-sm mb-4">
+                    <p className="text-muted-foreground text-sm mb-4">
                       Get the latest articles delivered to your inbox.
                     </p>
                     <input
                       type="email"
                       placeholder="Enter your email"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-[#2895f7] focus:outline-none transition-all text-sm mb-3"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-accent focus:outline-none transition-all text-sm mb-3"
                     />
-                    <button className="w-full py-3 bg-[#2895f7] text-white font-medium rounded-xl hover:bg-[#0082f3] transition-all text-sm cursor-pointer">
+                    <button className="w-full py-3 bg-accent text-white font-medium rounded-xl hover:bg-accent/90 transition-all text-sm cursor-pointer">
                       Subscribe
                     </button>
                   </div>

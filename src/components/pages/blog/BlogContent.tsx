@@ -76,10 +76,11 @@ export default function BlogContent() {
             >
               <Link href={`/blog/${post.id}`} className="group block h-full">
                 <div
-                  className={`relative h-full rounded-2xl border border-border bg-gradient-to-br hover:border-accent/30 transition-all duration-300 overflow-hidden p-7 flex flex-col justify-between min-h-[260px]`}
+                  className={`relative h-full rounded-2xl border border-border bg-gradient-to-br bg-card/80 hover:border-accent/30 transition-all duration-300 overflow-hidden p-7 flex flex-col justify-between min-h-[260px]`}
                 >
                   <div className="absolute inset-0 bg-dots opacity-30 pointer-events-none" />
-                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-15 blur-[50px] group-hover:opacity-30 transition-opacity bg-accent" />
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 blur-[50px] group-hover:opacity-20 transition-all duration-500 bg-accent" />
+
                   <div className="relative z-10">
                     <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-accent/10 border border-accent/20 text-accent">
                       {post.category}
