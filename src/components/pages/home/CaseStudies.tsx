@@ -102,7 +102,7 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className={`group relative rounded-2xl overflow-hidden border border-border bg-card/80 backdrop-blur-xl hover:border-accent/30 transition-all duration-300 cursor-pointer ${c.size === "large" ? "min-h-[280px]" : "min-h-[220px]"} p-8 flex flex-col justify-between`}
+                className={`group relative rounded-2xl overflow-hidden border border-border bg-card/80 backdrop-blur-xl hover:border-accent/30 transition-colors duration-300 cursor-pointer ${c.size === "large" ? "min-h-[280px]" : "min-h-[220px]"} p-8 flex flex-col justify-between`}
               >
                 <PatternBg type={c.pattern} />
 
