@@ -86,7 +86,7 @@ export default function TeamGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className={`group relative rounded-2xl border border-border bg-linear-to-br bg-card/70 backdrop-blur-xl hover:border-accent/20 transition-all duration-300 overflow-hidden p-6`}
+              className={`group relative rounded-2xl border border-border bg-linear-to-br bg-card/70 backdrop-blur-xl hover:border-accent/20 transition-colors duration-300 overflow-hidden p-6`}
             >
               {/* Glow on hover */}
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full opacity-0 group-hover:opacity-15 transition-opacity duration-500 blur-[40px] bg-accent-foreground/20" />

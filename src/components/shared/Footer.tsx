@@ -98,10 +98,20 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Vanguard DS. All rights reserved.
+            © {new Date().getFullYear()} Vanguard Digital Solutions. All rights
+            reserved.
           </p>
+
           <p className="text-xs text-muted-foreground">
-            Crafted with precision & passion
+            Built and crafted by{" "}
+            <a
+              href="https://ionidev.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              ionidev
+            </a>
           </p>
         </div>
       </div>
