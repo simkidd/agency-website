@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -113,7 +114,7 @@ export default function ServicesDetail() {
               whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: 0 }}
-              className={`group relative rounded-2xl border border-border bg-lineaer-to-br hover:border-accent/30 transition-all duration-500 overflow-hidden`}
+              className={`group relative rounded-2xl border border-border bg-lineaer-to-br hover:border-accent/30 transition-colors duration-500 overflow-hidden`}
             >
               {/* Background pattern */}
               <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none" />
@@ -144,13 +145,13 @@ export default function ServicesDetail() {
                       {svc.desc}
                     </p>
 
-                    <a
+                    <Link
                       href="/#contact"
                       className="group/btn inline-flex items-center gap-2 text-sm font-medium transition-colors text-accent hover:text-accent/80"
                     >
                       Start a conversation
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                    </a>
+                    </Link>
                   </div>
 
                   {/* Right — deliverables */}

@@ -79,9 +79,9 @@ export default function OurApproach() {
               key={item.title}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="group relative p-7 rounded-2xl border border-border bg-card/80 hover:border-accent/30 transition-all duration-300 overflow-hidden"
+              className="group relative p-7 rounded-2xl border border-border bg-card/80 hover:border-accent/30 transition-colors duration-300 overflow-hidden"
             >
               {/* Glow */}
               <div

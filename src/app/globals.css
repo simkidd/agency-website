@@ -46,7 +46,8 @@
   --primary: #1c2a44; /* Navy */
   --primary-foreground: #ffffff;
 
-  --accent: #d6b98c; /* Gold */
+  --accent: #9F806C;
+  /* --accent: #d6b98c; */
   --accent-foreground: #1c2a44;
 
   --secondary: #2f3e5c;
@@ -67,7 +68,7 @@
 
   --border: #e5e7eb;
   --input: #ffffff;
-  --ring: #d6b98c;
+  --ring: #9F806C;
 
   --destructive: #dc2626;
 }
@@ -76,10 +77,10 @@
   --background: #0f172a;
   --foreground: #f9fafb;
 
-  --primary: #d6b98c;
+  --primary: #9F806C;
   --primary-foreground: #0f172a;
 
-  --accent: #e6cfa7;
+  --accent: #9F806C;
   --accent-foreground: #0f172a;
 
   --secondary: #1f2937;
@@ -96,7 +97,7 @@
 
   --border: #1f2937;
   --input: #111827;
-  --ring: #d6b98c;
+  --ring: #9F806C;
 
   --destructive: #ef4444;
 }
@@ -115,7 +116,7 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #d6b98c 0%, #f5e6c8 100%);
+    background-image: linear-gradient(135deg, #9F806C 0%, #d6b98c 100%);
   }
 
   .glow-gold {

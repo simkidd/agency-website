@@ -23,12 +23,7 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="relative w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 cursor-pointer hover:opacity-80"
-      style={{
-        borderColor: "var(--border-color, rgba(255,255,255,0.1))",
-        background: "var(--bg-elevated, rgba(255,255,255,0.05))",
-        color: "var(--text-muted)",
-      }}
+      className="relative w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 cursor-pointer hover:opacity-80 border-border bg-primary/10 text-primary"
     >
       <AnimatePresence mode="wait" initial={false}>
         {isDark ? (
