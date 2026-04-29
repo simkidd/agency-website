@@ -1,8 +1,11 @@
-import Pricing from "@/components/pages/services/Pricing";
+import OurApproach from "@/components/pages/services/OurApproach";
 import ServicesCTA from "@/components/pages/services/ServicesCTA";
 import ServicesDetail from "@/components/pages/services/ServicesDetail";
-import OurApproach from "@/components/pages/services/OurApproach";
 import PageHeader from "@/components/shared/PageHeader";
+
+export const metadata = {
+  title: "Services",
+};
 
 const ServicesPage = () => {
   return (

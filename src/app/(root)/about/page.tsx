@@ -4,6 +4,10 @@ import AboutValues from "@/components/pages/about/AboutValues";
 import TeamGrid from "@/components/pages/about/TeamGrid";
 import PageHeader from "@/components/shared/PageHeader";
 
+export const metadata = {
+  title: "About Us",
+};
+
 const AboutPage = () => {
   return (
     <>
