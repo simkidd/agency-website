@@ -2,6 +2,10 @@ import BlogContent from '@/components/pages/blog/BlogContent'
 import BlogCTA from '@/components/pages/blog/BlogCTA'
 import PageHeader from '@/components/shared/PageHeader'
 
+export const metadata = {
+  title: "Blog",
+};
+
 const BlogPage = () => {
   return (
     <>
