@@ -5,6 +5,9 @@ import "./globals.css";
 import LoadingScreen from "./loading";
 import Providers from "@/providers/Providers";
 import NextTopLoader from "nextjs-toploader";
+import { config } from "@/utils/config";
+
+const { SITE_NAME, SITE_DESCRIPTION, SITE_URL } = config;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,12 +21,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vanguard Digital Solutions",
-    template: "%s | VDS — Vanguard Digital Solutions",
-    
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "VDS (Vanguard Digital Solutions) is a modern digital agency specializing in web development, UI/UX design, AI solutions, and scalable cloud systems. We build high-performance digital products that drive real business growth.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "VDS",
     "Vanguard Digital Solutions",
@@ -36,21 +37,21 @@ export const metadata: Metadata = {
     "cloud engineering",
     "product design studio",
   ],
-  authors: [{ name: "VDS Team" }],
-  creator: "Vanguard Digital Solutions",
-  metadataBase: new URL("https://vds.com"), // replace with real domain later
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "VDS — Vanguard Digital Solutions",
-    description:
-      "We design and build high-performance digital products — from web apps to AI systems — for startups and enterprises.",
-    url: "https://vds.com",
-    siteName: "VDS",
+    title: {
+      default: SITE_NAME,
+      template: `%s | ${SITE_NAME}`,
+    },
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
         url: "/og-image.png", // add later in /public
         width: 1200,
         height: 630,
-        alt: "Vanguard Digital Solutions",
+        alt: SITE_NAME,
       },
     ],
     locale: "en_US",
@@ -58,15 +59,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VDS — Vanguard Digital Solutions",
-    description:
-      "Modern digital agency building scalable web, AI, and cloud solutions.",
+    title: {
+      default: SITE_NAME,
+      template: `%s | ${SITE_NAME}`,
+    },
+    description: SITE_DESCRIPTION,
     images: ["/og-image.png"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    creator: "@onidev",
   },
 };
 
