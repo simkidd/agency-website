@@ -65,7 +65,7 @@ export default function Contact() {
             {/* Contact info */}
             <div className="space-y-5">
               {[
-                { icon: Mail, label: "Email", value: "hello@technova.io" },
+                { icon: Mail, label: "Email", value: "hello@Vanguardds.com" },
                 { icon: Phone, label: "Phone", value: "+1 (555) 000-0000" },
                 { icon: MapPin, label: "Office", value: "San Francisco, CA" },
               ].map((item) => (

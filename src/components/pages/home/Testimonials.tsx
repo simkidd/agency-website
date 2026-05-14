@@ -12,7 +12,7 @@ const testimonials = [
     role: "CEO, TechVentures Inc.",
     image: "/images/testimonial-1.jpg",
     quote:
-      "TechNova transformed our digital presence completely. Their attention to detail and innovative approach exceeded our expectations. The team was professional, responsive, and delivered on time.",
+      "Vanguarddsds transformed our digital presence completely. Their attention to detail and innovative approach exceeded our expectations. The team was professional, responsive, and delivered on time.",
     rating: 5,
   },
   {
@@ -21,7 +21,7 @@ const testimonials = [
     role: "CTO, DataFlow Systems",
     image: "/images/testimonial-2.jpg",
     quote:
-      "Working with TechNova was a game-changer for our startup. They built a scalable platform that handled our rapid growth seamlessly. Their technical expertise is unmatched.",
+      "Working with Vanguardds was a game-changer for our startup. They built a scalable platform that handled our rapid growth seamlessly. Their technical expertise is unmatched.",
     rating: 5,
   },
   {
@@ -30,7 +30,7 @@ const testimonials = [
     role: "Product Director, InnovateLab",
     image: "/images/testimonial-3.jpg",
     quote:
-      "The UI/UX design team at TechNova created an interface that our users absolutely love. Engagement increased by 150% after the redesign. Highly recommended!",
+      "The UI/UX design team at Vanguardds created an interface that our users absolutely love. Engagement increased by 150% after the redesign. Highly recommended!",
     rating: 5,
   },
 ];

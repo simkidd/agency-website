@@ -60,7 +60,7 @@ export default function Features() {
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-medium mb-5 uppercase tracking-wider">
-            Why TechNova
+            Why Vanguardds
           </div>
           <h2 className="font-display font-700 text-4xl lg:text-5xl text-foreground leading-tight mb-4">
             Built for the <span className="text-gradient">modern web</span>

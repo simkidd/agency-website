@@ -54,7 +54,7 @@ const posts = [
     category: "Strategy",
     title: "From Brief to Build: How We Approach New Projects",
     excerpt:
-      "A behind-the-scenes look at TechNova discovery and strategy process and why it makes everything else better.",
+      "A behind-the-scenes look at Vanguardds discovery and strategy process and why it makes everything else better.",
     readTime: "7 min read",
     date: "Dec 15, 2024",
   },

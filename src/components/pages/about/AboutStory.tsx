@@ -82,7 +82,7 @@ export default function AboutStory() {
             </h2>
             <div className="space-y-5 text-muted-foreground text-base leading-relaxed">
               <p>
-                TechNova started in 2012 with a simple belief: that great
+                Vanguardds started in 2012 with a simple belief: that great
                 software is the product of equal parts technical rigour and
                 creative ambition. We were tired of agencies that treated
                 development as a commodity and design as decoration.
